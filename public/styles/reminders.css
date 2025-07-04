@@ -1,0 +1,235 @@
+/* === Base Page Settings === */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f6f7;
+  height: 100%;
+  width: 100%;
+}
+
+/* === Breadcrumb Text (Top Left) === */
+.breadcrumb {
+  color: #bcbcbc;
+  font-size: 20px;
+  padding: 24px 30px 10px 30px;
+}
+
+/* === Main Grey Box Background === */
+.main-box {
+  background: #d9d9d9;
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 20px;
+  padding-bottom: 60px;
+  box-sizing: border-box;
+}
+
+/* === Header Bar (Back Button + Title + Subtitle) === */
+.header {
+  display: flex;
+  align-items: center;
+  background: #fffafa;
+  padding: 20px 40px;
+}
+
+/* === Circular Back Button === */
+.circle-btn {
+  width: 70px;
+  height: 70px;
+  background: #b3adad;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 25px;
+}
+
+/* === Left Arrow Icon inside Button === */
+.left-arrow {
+  font-size: 34px;
+  color: #313131;
+}
+
+/* === Page Title === */
+.title {
+  font-size: 48px;
+  font-weight: bold;
+  color: #212121;
+}
+
+/* === Subtitle Below Title === */
+.desc {
+  font-size: 24px;
+  margin-top: 8px;
+  color: #313131;
+}
+
+/* === Wrapper for All Content (Days + Reminders + Add Button) === */
+.inner-box {
+  max-width: 1300px;
+  margin: 60px auto 0 auto;
+  padding: 0 40px;
+  text-align: center;
+}
+
+/* === Instruction Text Above Day Buttons === */
+.tap-text {
+  font-size: 26px;
+  margin-bottom: 30px;
+}
+
+/* === Row of Day Buttons (Monday to Sunday) === */
+.days-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px 32px; /* horizontal and vertical gap increased for better spacing */
+  margin-top: 20px; /* optional: add vertical space above days */
+  margin-bottom: 60px; /* more space below buttons */
+}
+
+/* === Each Day Button (mon-sun) styling === */
+.day-btn {
+  font-size: 22px;
+  padding: 14px 30px;
+  border: 3px solid #222;
+  border-radius: 12px;
+  background: white;
+  cursor: pointer;
+}
+
+/* === Selected Day Button Styling === */
+.day-btn.selected {
+  font-weight: bold;
+  background: #eeeeee;
+}
+
+/* === Section Title for the Day’s Reminders === */
+.reminder-for {
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* === White Reminder Card Container === */
+.reminder-list {
+  background: white;
+  border-radius: 14px;
+  border: 2px solid #b3b3b3;
+  max-width: 1000px;
+  height: 200px;
+  margin: 0 auto 50px auto;
+  padding: 35px;
+  font-size: 22px;
+  text-align: left;
+}
+
+/* === Each Label Inside the Reminder List === */
+.reminder-list label {
+  display: block;
+  margin-bottom: 25px;
+}
+
+/* === Checkbox Styling for Reminders === */
+.reminder-list input[type="checkbox"] {
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+}
+
+/* === Section for Add Reminder Text + Button === */
+.add-section {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+/* === Downward Arrow Icon Above Add Button === */
+.down-arrow {
+  font-size: 34px;
+  margin: 10px 0;
+}
+
+/* === Add Reminder Button Styling === */
+.add-reminder-btn {
+  font-size: 22px;
+  padding: 14px 30px;
+  border-radius: 10px;
+  border: 3px solid #222;
+  background: white;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+/* === Hover Effect for Add Reminder Button === */
+.add-reminder-btn:hover {
+  background: #ededed;
+}
+
+
+/*======================================================================================================================*/
+/* === Add Reminder Form Styling === */
+
+.reminder-form {
+  width: 90%;
+  max-width: 700px;
+  min-height: 300px;
+  padding: 50px;
+  margin: 60px auto;
+  background-color: #f8f8f8;
+  border: 2px solid #ccc;
+  border-radius: 16px;
+  font-size: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Title */
+.form-title {
+  text-align: center;
+  font-size: 26px;
+  margin-bottom: 25px;
+}
+
+/* Input Sections */
+.task-section,
+.time-section {
+  margin-bottom: 20px;
+}
+
+.task-section label,
+.time-section label {
+  font-weight: bold;
+  font-size: 23px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.task-section input,
+.time-section input {
+  width: 100%;
+  padding: 10px;
+  font-size: 20px;
+  border: 2px solid #aaa;
+  border-radius: 8px; 
+  margin-left: 1px;  /* Optional: how far left you want it */
+}
+
+/* Button Section */
+.button-row {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.button-row button {
+  padding: 12px 22px;
+  font-size: 18px;
+  margin: 7px;
+  border-radius: 8px;
+  border: 2px solid #555;
+  cursor: pointer;
+}
+
+.button-row button:hover {
+  background-color: #e0e0e0;
+}
+

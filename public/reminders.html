@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Daily Reminder</title>
+  <link rel="stylesheet" href="styles/reminders.css" />
+</head>
+<body>
+  <div class="app-background">
+    <div class="main-box">
+      <div class="header">
+        <div class="circle-btn">
+          <span class="left-arrow">&#8592;</span>
+        </div>
+        <div class="header-text">
+          <div class="title">Daily Reminder</div>
+          <div class="desc">Set reminders so you won’t forget your tasks or medicine</div>
+        </div>
+      </div>
+
+      <div class="inner-box">
+        <div class="tap-text">Tap a day to view or add your reminder</div>
+        <div class="days-row" id="dayButtons">
+          <button class="day-btn selected" data-day="Monday">Monday</button>
+          <button class="day-btn" data-day="Tuesday">Tuesday</button>
+          <button class="day-btn" data-day="Wednesday">Wednesday</button>
+          <button class="day-btn" data-day="Thursday">Thursday</button>
+          <button class="day-btn" data-day="Friday">Friday</button>
+          <button class="day-btn" data-day="Saturday">Saturday</button>
+          <button class="day-btn" data-day="Sunday">Sunday</button>
+        </div>
+
+        <div class="reminder-for" id="reminderTitle">
+          Reminder for Monday:
+        </div>
+
+        <div class="reminder-list" id="reminderList">
+          <!-- Reminders will show here -->
+        </div>
+
+        <div class="add-section">
+          Click the button below to create a new reminder:
+          <div class="down-arrow">&#8595;</div>
+          <button class="add-reminder-btn" onclick="toggleAddForm()">+ Add Reminder</button>
+        </div>
+
+        <!-- Reminder Form -->
+        <div id="addForm" class="reminder-form" style="display: none;">
+          <h2 class="form-title">➕ Add Reminder for <span id="formDay">Monday</span>:</h2>
+
+          <div class="task-section">
+            <label for="taskInput">Task:</label>
+            <input type="text" id="taskInput" placeholder="Example, Take Medicine" />
+          </div>
+
+          <div class="time-section">
+            <label for="timeInput">Time:</label>
+            <input type="text" id="timeInput" placeholder="Example, 9:00 AM" />
+          </div>
+
+          <div class="button-row">
+            <button onclick="saveReminder()">Save Reminder</button>
+            <button onclick="cancelReminder()">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/reminders.js"></script>
+</body>
+</html>
+
+
+
