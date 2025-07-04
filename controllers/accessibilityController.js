@@ -1,5 +1,5 @@
 const sql = require('mssql');
-const config = require('../models/dbConfig');
+const config = require('../dbConfig');
 const accessibilityModel = require('../models/accessibilityModel');
 
 exports.getSettings = async (req, res) => {

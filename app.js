@@ -5,10 +5,13 @@ const app = express();
 
 const clinicRoutes = require('./routes/clinics');
 const directionRoutes = require('./routes/directions');
+const accessibilityRoutes = require('./routes/accessibility'); 
+
 
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 
 // Serve static frontend files
 app.use(express.static(path.join(__dirname, 'public')));
@@ -16,6 +19,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // API routes
 app.use('/clinics', clinicRoutes);
 app.use('/directions', directionRoutes);
+app.use('/', accessibilityRoutes);
 
 // Default route
 app.get('/', (req, res) => {
