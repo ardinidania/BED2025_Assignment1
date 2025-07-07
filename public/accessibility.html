@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Accessibility Preferences</title>
+  <link rel="stylesheet" href="styles/accessibility.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Accessibility Preferences</h1>
+    <p>Adjust the app to suit your needs</p>
+
+    <!-- Font Size -->
+    <div class="section">
+      <h2>Font Size</h2>
+      <select id="fontSize">
+        <option value="small">Small (14px)</option>
+        <option value="medium">Medium (16px–18px)</option>
+        <option value="large">Large (20px–22px)</option>
+        <option value="xlarge">Extra Large (24px–28px)</option>
+      </select>
+    </div>
+
+    <!-- Contrast Level Slider -->
+    <div class="section">
+      <h2>Contrast Level</h2>
+      <div class="slider-wrapper">
+        <span>Low</span>
+        <input type="range" id="contrastLevel" min="0" max="100" value="50">
+        <span>High</span>
+      </div>
+    </div>
+
+  <!-- Voice Assistant Toggle -->
+<div class="section">
+  <h2>Voice Assistant</h2>
+  <label class="switch">
+    <input type="checkbox" id="voiceAssist">
+    <span class="slider round"></span>
+  </label>
+</div>
+
+
+    <button id="saveBtn">Save Changes</button>
+  </div>
+
+  <script src="js/accessibility.js"></script>
+</body>
+</html>

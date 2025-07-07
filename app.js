@@ -6,11 +6,12 @@ const app = express();
 const clinicRoutes = require('./routes/clinics');
 const directionRoutes = require('./routes/directions');
 const accessibilityRoutes = require('./routes/accessibility'); 
-
+const savedPlacesRoutes = require('./routes/savedPlaces');
 
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use('/', savedPlacesRoutes);
 
 
 // Serve static frontend files
