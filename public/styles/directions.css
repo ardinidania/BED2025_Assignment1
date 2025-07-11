@@ -1,9 +1,7 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #eef6fd;
   margin: 0;
-  padding: 0;
-  color: #003366;
+  font-family: Arial, sans-serif;
+  background-color: #eef7ff;
 }
 
 .container {
@@ -13,53 +11,53 @@ body {
 .header {
   font-size: 24px;
   font-weight: bold;
+  color: #01497c;
   margin-bottom: 20px;
-  cursor: pointer;
+}
+
+.back-arrow {
+  text-decoration: none;
+  color: #01497c;
+  margin-right: 10px;
+  font-size: 24px;
 }
 
 .clinic-info {
   display: flex;
-  gap: 20px;
+  justify-content: center;
+  gap: 40px;
   margin-bottom: 30px;
   flex-wrap: wrap;
 }
 
 .map-box iframe {
   width: 300px;
-  height: 220px;
-  border: none;
+  height: 200px;
+  border: 0;
   border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
 }
 
 .details-box {
-  background: #ffffff;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
   max-width: 350px;
-}
-
-button {
-  margin-top: 10px;
-  background-color: #007bff;
-  color: white;
-  padding: 8px 12px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 .steps {
-  background-color: #dceeff;
-  padding: 15px;
-  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .step-box {
-  background-color: white;
-  margin: 10px 0;
-  padding: 10px;
-  border-radius: 8px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  border-left: 6px solid #3a86ff;
+  box-shadow: 0 0 6px rgba(0,0,0,0.05);
 }
+
 
