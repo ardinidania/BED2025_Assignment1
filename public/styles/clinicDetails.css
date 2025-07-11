@@ -3,19 +3,13 @@ body {
   background-color: #eef7fd;
   margin: 0;
   padding: 20px;
-}
-
-.back-link {
-  font-size: 24px;
-  font-weight: bold;
-  color: #002e5d;
-  text-decoration: none;
+   transform: scale(0.95); 
 }
 
 .clinic-details-container {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 30px;
+  margin-top: 100px;
   gap: 40px;
   align-items: flex-start;
   justify-content: center;
@@ -23,18 +17,24 @@ body {
 
 .map-container {
   width: 500px;
-  height: 400px;
+  height: 440px;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-sizing: border-box;
 }
 
 .clinic-info {
   background-color: white;
   padding: 30px;
   border-radius: 12px;
-  max-width: 500px;
+  width: 500px;
+  height: 440px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 #clinic-name {
@@ -44,15 +44,15 @@ body {
 }
 
 p {
-  font-size: 18px;
+  font-size: 20px;
   margin: 15px 0;
 }
 
 button {
   margin-top: 20px;
   padding: 12px 20px;
-  font-size: 18px;
-  background-color: #007bff;
+  font-size: 20px;
+  background-color: #3399ff;
   color: white;
   border: none;
   border-radius: 8px;
@@ -63,3 +63,55 @@ button:hover {
   background-color: #005dc1;
 }
 
+.save-btn {
+  background-color: #3399ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 22px;
+  margin-top: 20px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.save-btn:hover {
+  background-color: #005dc1;
+}
+
+/*========================================================*/
+.header-row {
+  display: flex;
+  align-items: center;
+  margin-top: 35px;
+  margin-left: 20px;
+}
+
+.circle-back-button {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.arrow-icon {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-top: 2px solid #002e5d;
+  border-left: 2px solid #002e5d;
+  transform: rotate(-45deg);
+  margin-left: 2px;
+}
+
+.back-text {
+  font-size: 30px;
+  font-weight: bold;
+  color: #002e5d;
+}

@@ -7,7 +7,14 @@
   <link rel="stylesheet" href="styles/clinicDetails.css">
 </head>
 <body>
-  <a href="index.html" class="back-link">← Nearby Clinics</a>
+
+  <div class="header-row">
+    <a href="clinics.html" class="circle-back-button">
+      <span class="arrow-icon"></span>
+    </a>
+    <span class="back-text">Nearby Clinics</span>
+  </div>
+
   <div class="clinic-details-container">
     <div class="map-container" id="clinic-map"></div>
     <div class="clinic-info">
@@ -16,8 +23,10 @@
       <p><strong>Phone:</strong> <span id="clinic-phone"></span></p>
       <p><strong>Opening Hours:</strong> <span id="clinic-hours"></span></p>
       <button id="startRouteBtn">Start Route Now</button>
+      <button class="save-btn">Save Place</button>
     </div>
   </div>
+
   <script src="js/clinicDetails.js"></script>
 </body>
 </html>

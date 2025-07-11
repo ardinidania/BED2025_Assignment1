@@ -29,7 +29,28 @@ async function postReminder(req, res) {
   }
 }
 
+// DELETE /reminders/:id
+async function deleteReminder(req, res) {
+  const id = parseInt(req.params.id);
+  if (isNaN(id)) {
+    return res.status(400).json({ error: "Invalid reminder ID" });
+  }
+
+  try {
+    const success = await reminderModel.deleteReminderById(id);
+    if (success) {
+      res.json({ message: "Reminder deleted successfully" });
+    } else {
+      res.status(404).json({ error: "Reminder not found" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: "Server error while deleting reminder" });
+  }
+}
+
+
 module.exports = {
   getReminders,
-  postReminder
+  postReminder,
+  deleteReminder
 };

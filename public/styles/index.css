@@ -3,7 +3,7 @@ body {
   background-color: #f0f8ff;
   margin: 0;
   padding: 40px;
-  transform: scale(0.9); 
+  transform: scale(0.88); 
   transform-origin: top center;
   padding-top: 75px; /* shifts everything down */
 }
@@ -14,7 +14,7 @@ body {
   border-radius: 16px;
   border: 4px solid #8cb3d9;
   padding: 55px;
-  min-height: 235px; 
+  min-height: 229px; 
   margin-bottom: 40px;
   box-shadow: 0 2px 8px rgba(170, 208, 240, 0.2);
   display: flex;
@@ -71,7 +71,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 465px;
+  height: 457px;
   max-width: 355px;
   box-sizing: border-box;
   min-width: 0;

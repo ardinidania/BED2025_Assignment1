@@ -1,69 +1,127 @@
-let reminders = {
-  Monday: [],
-  Tuesday: [],
-  Wednesday: [],
-  Thursday: [],
-  Friday: [],
-  Saturday: [],
-  Sunday: []
-};
-
+let reminders = [];
 let currentDay = 'Monday';
+const userId = 3; // Replace with dynamic userId after login integration
 
+// Show add form
 function toggleAddForm() {
   document.getElementById('addForm').style.display = 'block';
   document.getElementById('formDay').innerText = currentDay;
 }
 
+// Cancel and reset form
 function cancelReminder() {
   document.getElementById('addForm').style.display = 'none';
   document.getElementById('taskInput').value = '';
   document.getElementById('timeInput').value = '';
+  document.getElementById('typeInput').value = '';
 }
 
+// Save reminder to backend
 function saveReminder() {
   const task = document.getElementById('taskInput').value;
   const time = document.getElementById('timeInput').value;
+  const type = document.getElementById('typeInput').value;
 
-  if (task && time) {
-    reminders[currentDay].push({ task, time });
-    cancelReminder();
-    renderReminders();
+  if (task && time && type) {
+    const newReminder = {
+      description: task,
+      time,
+      type,
+      day: currentDay,
+      userId
+    };
+
+    fetch('/reminders', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newReminder)
+    })
+      .then(res => {
+        if (res.ok) {
+          cancelReminder();
+          fetchReminders();
+        } else {
+          alert('Failed to save reminder.');
+        }
+      })
+      .catch(err => console.error('Error saving reminder:', err));
   } else {
-    alert('Please enter both task and time!');
+    alert('Please fill in all fields!');
   }
 }
 
+// Load reminders from backend
+function fetchReminders() {
+  fetch(`/reminders/${userId}`)
+    .then(res => res.json())
+    .then(data => {
+      reminders = data;
+      renderReminders();
+    })
+    .catch(err => console.error('Error fetching reminders:', err));
+}
+
+// Display reminders for current day
 function renderReminders() {
   const list = document.getElementById('reminderList');
   list.innerHTML = '';
 
-  reminders[currentDay].forEach((reminder, index) => {
+  const filtered = reminders.filter(
+    r => r.day === currentDay && r.userId === userId
+  );
+
+  filtered.forEach((reminder) => {
     const label = document.createElement('label');
+    label.style.display = 'flex';
+    label.style.alignItems = 'center';
+    label.style.padding = '16px 0';
+    label.style.fontSize = '22px';
+    label.style.borderBottom = '1px solid #4a90e2';
+
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
+    checkbox.style.marginRight = '12px';
     checkbox.style.width = '24px';
     checkbox.style.height = '24px';
-    checkbox.style.marginRight = '12px';
 
     checkbox.addEventListener('change', () => {
       if (checkbox.checked) {
+        label.style.transition = 'opacity 0.6s ease';
+        label.style.opacity = '0.3';
+
         setTimeout(() => {
-          reminders[currentDay].splice(index, 1);
-          renderReminders();
-        }, 500); // brief delay before deletion
+          deleteReminder(reminder.id);
+        }, 600);
       }
     });
 
+    const textSpan = document.createElement('span');
+    textSpan.textContent = `${reminder.description} – ${reminder.time} (${reminder.type})`;
+
     label.appendChild(checkbox);
-    label.append(`${reminder.task} – ${reminder.time}`);
+    label.appendChild(textSpan);
     list.appendChild(label);
   });
 
   document.getElementById('reminderTitle').innerText = `Reminder for ${currentDay}:`;
 }
 
-// Handle day button clicks
+// Delete a reminder from backend
+function deleteReminder(id) {
+  fetch(`/reminders/${id}`, {
+    method: 'DELETE'
+  })
+    .then(res => {
+      if (res.ok) {
+        fetchReminders();
+      } else {
+        alert('Failed to delete reminder');
+      }
+    })
+    .catch(err => console.error('Error deleting reminder:', err));
+}
+
+// Day switching logic
 document.querySelectorAll('.day-btn').forEach(button => {
   button.addEventListener('click', () => {
     document.querySelectorAll('.day-btn').forEach(btn => btn.classList.remove('selected'));
@@ -73,5 +131,5 @@ document.querySelectorAll('.day-btn').forEach(button => {
   });
 });
 
-// Initial render
-renderReminders();
+// Initial load
+fetchReminders();

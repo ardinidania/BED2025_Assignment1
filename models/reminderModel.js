@@ -26,7 +26,18 @@ async function createReminder(data) {
   return true;
 }
 
+// Delete reminder by ID
+async function deleteReminderById(id) {
+  const pool = await sql.connect(dbConfig);
+  const result = await pool
+    .request()
+    .input("id", sql.Int, id)
+    .query("DELETE FROM Reminders WHERE id = @id");   
+  return result.rowsAffected[0] > 0; // returns true only if a row was deleted
+}
+
 module.exports = {
   getRemindersByUserId,
-  createReminder
+  createReminder,
+  deleteReminderById
 };

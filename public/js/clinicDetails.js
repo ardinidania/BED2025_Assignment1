@@ -28,3 +28,42 @@ document.addEventListener('DOMContentLoaded', () => {
     window.location.href = 'directions.html';
   });
 });
+
+
+//===========================================================================================//
+// For the Save Place
+document.addEventListener('DOMContentLoaded', () => {
+  const saveBtn = document.querySelector('.save-btn');
+
+  // Get clinic data from the DOM
+  const clinicName = document.getElementById('clinic-name').textContent;
+  const clinicAddress = document.getElementById('clinic-address').textContent;
+  const clinicPhone = document.getElementById('clinic-phone').textContent;
+  const clinicHours = document.getElementById('clinic-hours').textContent;
+
+  saveBtn.addEventListener('click', () => {
+    const savedPlaces = JSON.parse(localStorage.getItem('savedPlaces')) || [];
+
+    // Check if it's already saved to avoid duplicates
+    const isAlreadySaved = savedPlaces.some(place => place.name === clinicName);
+    if (isAlreadySaved) {
+      alert('This place is already saved.');
+      return;
+    }
+
+    // Create clinic object
+    const clinic = {
+      name: clinicName,
+      address: clinicAddress,
+      phone: clinicPhone,
+      hours: clinicHours
+    };
+
+    savedPlaces.push(clinic);
+    localStorage.setItem('savedPlaces', JSON.stringify(savedPlaces));
+    alert('Place saved successfully!');
+
+    // OPTIONAL: redirect to savedplaces.html after saving
+    // window.location.href = 'savedplaces.html';
+  });
+});

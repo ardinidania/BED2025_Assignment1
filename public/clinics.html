@@ -7,14 +7,41 @@
   <link rel="stylesheet" href="styles/clinics.css">
 </head>
 <body>
-  <a href="index.html" class="back-link">← Nearby Clinics</a>
-  <div class="grid-container">
-    <div class="region-box" id="North"><h2>North</h2></div>
-    <div class="region-box" id="South"><h2>South</h2></div>
-    <div class="region-box" id="East"><h2>East</h2></div>
-    <div class="region-box" id="West"><h2>West</h2></div>
-    <div class="region-box" id="Central"><h2>Central</h2></div>
+  <div class="top-header">
+    <div class="header-left">
+  <a href="index.html" class="circle-back-button">
+    <span class="arrow-icon"></span>
+  </a>
+  <span class="back-text">Home</span>
+</div>
+
+    <div class="header-right">
+      <a href="savedPlaces.html" class="save-btn">View Saved Places</a>
+    </div>
   </div>
+
+  <div class="grid-wrapper">
+    <div class="top-row">
+      <div class="region-box" id="North">
+        <h2>North</h2>
+      </div>
+      <div class="region-box" id="South">
+        <h2>South</h2>
+      </div>
+      <div class="region-box" id="East">
+        <h2>East</h2>
+      </div>
+    </div>
+    <div class="bottom-row">
+      <div class="region-box" id="West">
+        <h2>West</h2>
+      </div>
+      <div class="region-box" id="Central">
+        <h2>Central</h2>
+      </div>
+    </div>
+  </div>
+
   <script src="js/clinics.js"></script>
 </body>
 </html>

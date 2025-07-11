@@ -10,7 +10,7 @@
     <div class="main-box">
       <div class="header">
         <div class="circle-btn">
-          <span class="left-arrow">&#8592;</span>
+          <span class="left-arrow"></span>
         </div>
         <div class="header-text">
           <div class="title">Daily Reminder</div>
@@ -48,14 +48,23 @@
         <div id="addForm" class="reminder-form" style="display: none;">
           <h2 class="form-title">➕ Add Reminder for <span id="formDay">Monday</span>:</h2>
 
-          <div class="task-section">
-            <label for="taskInput">Task:</label>
-            <input type="text" id="taskInput" placeholder="Example, Take Medicine" />
+          <div class="form-row">
+            <label for="taskInput" class="form-label">Task:</label>
+            <input type="text" id="taskInput" class="form-input" placeholder="Example, Take Medicine" />
           </div>
 
-          <div class="time-section">
-            <label for="timeInput">Time:</label>
-            <input type="text" id="timeInput" placeholder="Example, 9:00 AM" />
+          <div class="form-row">
+            <label for="timeInput" class="form-label">Time:</label>
+            <input type="text" id="timeInput" class="form-input" placeholder="Example, 9:00 AM" />
+          </div>
+
+          <div class="form-row">
+            <label for="typeInput" class="form-label">Type:</label>
+            <select id="typeInput" class="form-input">
+              <option value="">-- Select Type --</option>
+              <option value="Medication">Medication</option>
+              <option value="Exercise">Exercise</option>
+            </select>
           </div>
 
           <div class="button-row">
@@ -70,6 +79,5 @@
   <script src="js/reminders.js"></script>
 </body>
 </html>
-
 
 

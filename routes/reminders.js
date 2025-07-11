@@ -2,11 +2,13 @@ const express = require("express");
 const router = express.Router();
 const {
   getReminders,
-  postReminder
+  postReminder,
+  deleteReminder 
 } = require("../controllers/remindersController");
 const validateReminder = require("../middlewares/validateReminder");
 
 router.get("/:userId", getReminders);
 router.post("/", validateReminder, postReminder);
+router.delete("/:id", deleteReminder);
 
 module.exports = router;
