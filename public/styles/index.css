@@ -1,15 +1,18 @@
-body {
+/* === Base Page Settings === */
+html {
   font-family: Arial, sans-serif;
+  font-size: 18px; /* Base size for consistent scaling */
+}
+
+body {
   background-color: #f0f8ff;
   margin: 0;
   padding: 40px;
   transform: scale(0.9);
   transform-origin: top center;
-  padding-top: 75px;
-  font-size: inherit; /* Inherit from html */
 }
 
-/* Styling for horizontal rectangle box */
+/* === Horizontal Rectangle Box === */
 .main-card {
   background-color: #e6f2fb;
   border-radius: 16px;
@@ -23,25 +26,23 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  font-size: inherit;
 }
 
-/* Styling for the 'Add Appointment' button */
+/* === Main Header Text === */
 .main-header {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: flex-start; 
   text-align: left;
-  font-size: inherit;
 }
 
 .main-header h1 {
   margin: 0;
-  font-size: inherit;
+  font-size: 80px; /* Bold and large like your second image */
   font-weight: bold;
-  text-align: center;
 }
 
+/* === Add Appointment Button === */
 .add-btn {
   margin-top: 25px;
   padding: 15px 28px;
@@ -49,11 +50,12 @@ body {
   border: none;
   border-radius: 12px;
   cursor: pointer;
-  font-size: inherit;
+  font-size: 18px; /* Consistent button text size */
   text-transform: capitalize;
   letter-spacing: 1px;
 }
 
+/* === Feature Cards Layout === */
 .feature-grid {
   display: flex;
   justify-content: space-between;
@@ -61,7 +63,7 @@ body {
   flex-wrap: nowrap;
 }
 
-/* Adjusting the 4 rectangles */
+/* === Feature Card Styling === */
 .feature-card {
   background-color: #e6f2fb;
   border-radius: 16px;
@@ -70,7 +72,7 @@ body {
   flex: 1;
   text-align: left;
   font-weight: bold;
-  font-size: inherit;
+  font-size: 30px; /* Matches the box label size in your second image */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -87,6 +89,7 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
+/* === Circle Icon at Bottom of Card === */
 .feature-card .circle {
   width: 60px;
   height: 60px;

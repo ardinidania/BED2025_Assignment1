@@ -6,36 +6,53 @@
   <title>Doctor Appointment</title>
   <link rel="stylesheet" href="styles/index.css" />
   <link rel="stylesheet" href="styles/darkmode.css" />
+  <style>
+    .feature-card {
+      text-decoration: none;
+      color: black;
+    }
+
+    .feature-card p {
+      margin: 0;
+    }
+
+    .add-btn {
+      text-decoration: none;
+      color: black;
+    }
+  </style>
 </head>
 <body>
   <div class="main-card">
     <div class="main-header">
       <h1>Doctor Appointment</h1>
-      <button class="add-btn">Add Appointment</button>
+      <a href="appointments.html" class="add-btn">Add Appointment</a>
     </div>
   </div>
 
   <div class="feature-grid">
-    <div class="feature-card">
+    <a href="reminders.html" class="feature-card">
       <p>Your Daily Reminder</p>
       <div class="circle"></div>
-    </div>
-    <div class="feature-card">
+    </a>
+
+    <a href="notes.html" class="feature-card">
       <p>Health Notes<br>& Records</p>
       <div class="circle"></div>
-    </div>
-    <div class="feature-card">
+    </a>
+
+    <a href="clinics.html" class="feature-card">
       <p>Nearby Clinics</p>
       <div class="circle"></div>
-    </div>
-    <div class="feature-card">
+    </a>
+
+    <a href="accessibility.html" class="feature-card">
       <p>Accessibility<br>Preference</p>
       <div class="circle"></div>
-    </div>
+    </a>
   </div>
 
   <script src="js/darkmode.js"></script>
   <script src="js/accessibility.js"></script>
-  
 </body>
 </html>
