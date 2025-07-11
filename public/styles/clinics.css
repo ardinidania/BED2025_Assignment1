@@ -1,8 +1,23 @@
+:root {
+  --base-font-size: 18px;
+}
+
+html {
+  font-size: var(--base-font-size);
+}
+
 body {
   font-family: Arial, sans-serif;
   background-color: #eef7fd;
   margin: 0;
-  padding: 0;
+  padding: 20px;
+  transform: scale(0.93);
+  font-size: inherit;
+}
+
+/* Inherit font size for all text elements */
+h1, h2, p, label, button, a, .back-text, .clinic-name, .save-btn {
+  font-size: inherit;
 }
 
 /*========================================================================*/
@@ -11,31 +26,30 @@ body {
   justify-content: space-between;
   align-items: center;
   background-color: #d0eaff;
-  padding: 45px 50px;
-  border-radius: 16px;
-  border: 2px solid #a7d3f4;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  width: calc(100vw - 60px);
-  margin: 40px auto;
-  box-sizing: border-box;
-  transform: scale(1.015);
+  padding: 20px 40px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  border: 2px solid #90c5f0;
+  max-width: 1600px;
+  margin: 0 auto;
+  margin-top: 20px;
 }
 
 .header-left .back-link {
-  font-size: 30px;
+  font-size: inherit;
   font-weight: bold;
   color: #003366;
   text-decoration: none;
-  margin-top: 8px;
+  margin-top: 10px;
 }
 
 .header-right .save-btn {
-  font-size: 22px;
+  font-size: inherit;
   background-color: #ffffff;
   color: #003366;
-  padding: 12px 24px;
-  border: 2px solid #003366;
-  border-radius: 12px;
+  padding: 10px 20px;
+  border: 1.5px solid #003366;
+  border-radius: 10px;
   text-decoration: none;
   font-weight: 600;
   transition: background-color 0.3s;
@@ -54,8 +68,10 @@ body {
   gap: 60px 100px;
   justify-items: center;
   padding: 50px 20px;
+  margin-top: 40px;
 }
 
+/* Ensure West and Central start on row 2 */
 #region-box:nth-child(4) { grid-column: 1; }
 #region-box:nth-child(5) { grid-column: 2; }
 
@@ -63,8 +79,8 @@ body {
   background-color: #d5eaff;
   border-radius: 20px;
   padding: 20px;
-  width: 340px;
-  min-height: 230px;
+  width: 350px;
+  min-height: 250px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   text-align: center;
   border: 2px solid #90c5f0;
@@ -78,7 +94,7 @@ body {
 .clinic-name {
   background-color: white;
   color: #003366;
-  font-size: 20px;
+  font-size: inherit;
   font-weight: bold;
   padding: 12px;
   margin: 10px 0;
@@ -96,22 +112,22 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 30px; /* was 60px, reduced to shift up */
-  gap: 40px;         /* was 50px, slightly tighter spacing */
+  margin-top: 60px;
+  gap: 50px;
 }
 
 .top-row {
   display: flex;
   justify-content: center;
   gap: 140px;
-  margin-top: 10px;  /* was 20px, tighter */
+  margin-top: 20px;
 }
 
 .bottom-row {
   display: flex;
   justify-content: center;
   gap: 140px;
-  margin-top: 15px;  /* was 25px, reduced for closer spacing */
+  margin-top: 25px;
 }
 
 /*================================================================*/
@@ -145,7 +161,7 @@ body {
 }
 
 .back-text {
-  font-size: 40px;
+  font-size: inherit;
   font-weight: bold;
   color: #003366;
 }

@@ -1,0 +1,316 @@
+:root {
+  --base-font-size: 18px;
+}
+
+html {
+  font-size: var(--base-font-size);
+}
+
+/* ====================== GLOBAL STYLES (APPLY TO ALL HTMLs) ====================== */
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+/* Base font size controlled by JS */
+html {
+  font-size: var(--base-font-size, 20px); /* fallback if JS fails */
+}
+
+body,
+* {
+  font-size: inherit;
+}
+
+
+/* ====================== accessibility.html ====================== */
+/* Container and layout boxes */
+body.dark-mode .container,
+body.dark-mode .top-header,
+body.dark-mode .region-box,
+body.dark-mode .box,
+body.dark-mode .card {
+  background-color: #1e1e1e;
+  border-color: #444;
+  color: #ffffff;
+}
+
+/* Ensure text in all headings and paragraphs is white */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode p,
+body.dark-mode span,
+body.dark-mode label,
+body.dark-mode div,
+body.dark-mode a,
+body.dark-mode button {
+  color: #ffffff !important;
+}
+
+/* Buttons */
+body.dark-mode button,
+body.dark-mode .save-btn,
+body.dark-mode .circle-back-button {
+  background-color: #333;
+  color: #ffffff !important;
+  border-color: #555;
+}
+
+/* Inputs, selects, links */
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode a {
+  background-color: #2a2a2a;
+  color: #ffffff !important;
+  border-color: #555;
+}
+
+/* ====================== index.html ====================== */
+/* Clinic buttons */
+body.dark-mode .clinic-name {
+  background-color: #2a2a2a;
+  color: #ffffff !important;
+  border: 1.5px solid #555;
+}
+
+body.dark-mode .clinic-name:hover {
+  background-color: #3a3a3a;
+}
+
+/* Region headers */
+body.dark-mode .region-box h2 {
+  color: #ffffff !important;
+}
+
+/* Home text and back arrow */
+body.dark-mode .back-text {
+  color: #ffffff !important;
+}
+
+body.dark-mode .arrow-icon {
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+}
+
+/* ====================== clinics.html ====================== */
+/* Fix: Black text on light backgrounds in dark mode */
+body.dark-mode .main-card,
+body.dark-mode .main-header,
+body.dark-mode .feature-card,
+body.dark-mode .feature-card *,
+body.dark-mode .main-card *,
+body.dark-mode .main-header * {
+  color: #000000 !important;
+}
+
+/* Ensure button text stays white even on light background */
+body.dark-mode .main-card .add-btn {
+  color: #ffffff !important;
+}
+
+/* ====================== reminder.html (Daily Reminder) ====================== */
+/* Global background and text */
+body.dark-mode,
+body.dark-mode html {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+/* Outer containers */
+body.dark-mode .app-background,
+body.dark-mode .main-box {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+/* Reminder section containers */
+body.dark-mode .reminder-section,
+body.dark-mode .reminder-box,
+body.dark-mode .reminder-form,
+body.dark-mode .reminder-header,
+body.dark-mode .reminder-content,
+body.dark-mode .reminder-input,
+body.dark-mode .reminder-card,
+body.dark-mode .day-buttons,
+body.dark-mode .reminder-display-area {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border-color: #444;
+}
+
+/* Headings, text, and labels */
+body.dark-mode .reminder-section h1,
+body.dark-mode .reminder-section h2,
+body.dark-mode .reminder-section h3,
+body.dark-mode .reminder-section p,
+body.dark-mode .reminder-section span,
+body.dark-mode .reminder-section label,
+body.dark-mode .reminder-section button {
+  color: #ffffff !important;
+}
+
+/* Inputs & textareas */
+body.dark-mode input[type="text"],
+body.dark-mode input[type="time"],
+body.dark-mode textarea {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border: 1px solid #555;
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+  color: #cccccc;
+}
+
+/* Buttons */
+body.dark-mode .reminder-button,
+body.dark-mode .day-buttons button,
+body.dark-mode .save-btn,
+body.dark-mode .cancel-btn,
+body.dark-mode .add-reminder-btn {
+  background-color: #111111 !important;
+  color: #ffffff !important;
+  border: 1px solid #555;
+}
+
+/* Selected day styling in dark mode */
+body.dark-mode .day-btn.selected {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+
+
+/* Back button and arrow */
+body.dark-mode .back-button {
+  background-color: #1a1a1a !important;
+  color: #ffffff !important;
+  border: none;
+}
+
+body.dark-mode .arrow-icon {
+  border-top: 2px solid #ffffff !important;
+  border-left: 2px solid #ffffff !important;
+  color: #ffffff !important;
+}
+
+/* Top header bar and its text */
+body.dark-mode .header {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .header-text .title,
+body.dark-mode .header-text .desc {
+  color: #ffffff !important;
+}
+
+/* Back arrow button inside circle */
+body.dark-mode .circle-btn {
+  background-color: #1a1a1a !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .circle-btn .left-arrow {
+  color: #ffffff !important;
+}
+
+/* ====================== clinicdetails.html ====================== */
+
+/* Entire page background */
+body.dark-mode,
+body.dark-mode html {
+  background-color: #000000 !important;
+}
+
+/* Header background and text */
+body.dark-mode .header-row {
+  background-color: #000000 !important;
+}
+
+body.dark-mode .back-text {
+  color: #ffffff !important;
+}
+
+/* Back button (circle + arrow) */
+body.dark-mode .circle-back-button {
+  background-color: #000000 !important;
+}
+
+body.dark-mode .arrow-icon {
+  border-top: 2px solid #ffffff !important;
+  border-left: 2px solid #ffffff !important;
+}
+
+/* Clinic info card should stay white with black text */
+body.dark-mode .clinic-info {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+/* Make sure all text inside the card is black */
+body.dark-mode .clinic-info * {
+  color: #000000 !important;
+}
+
+/* Optional: buttons inside the card stay dark */
+body.dark-mode .clinic-info button {
+  background-color: #1a1a1a !important;
+  color: #ffffff !important;
+  border: 1px solid #444;
+}
+
+/* ====================== savedplaces.html ====================== */
+
+/* Page background */
+body.dark-mode,
+body.dark-mode html {
+  background-color: #000000 !important;
+}
+
+/* Title text */
+body.dark-mode .page-title {
+  color: #ffffff !important;
+}
+
+/* "Nearby Clinics" text */
+body.dark-mode .back-text {
+  color: #ffffff !important;
+}
+
+/* Back arrow styling */
+body.dark-mode .circle-back-button {
+  background-color: #000000 !important;
+}
+
+body.dark-mode .arrow-icon {
+  border-top: 2px solid #ffffff !important;
+  border-left: 2px solid #ffffff !important;
+}
+
+/* Saved Clinic Box stays white, but text inside is black */
+body.dark-mode .clinic-box {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border-color: #ccc !important;
+}
+
+/* Force all text inside .clinic-box to black */
+body.dark-mode .clinic-box * {
+  color: #000000 !important;
+}
+
+/* Remove button styling */
+body.dark-mode .remove-btn {
+  background-color: #1a1a1a !important;
+  color: #ffffff !important;
+  border: 1px solid #444 !important;
+}
+
+/* "No saved places" message */
+body.dark-mode #no-saved-message {
+  color: #ffffff !important;
+}

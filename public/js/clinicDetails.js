@@ -67,3 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // window.location.href = 'savedplaces.html';
   });
 });
+
+
+
+

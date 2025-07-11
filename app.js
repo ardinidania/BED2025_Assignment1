@@ -20,8 +20,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/clinics', clinicRoutes);
 app.use('/directions', directionRoutes);
 app.use('/reminders', reminderRoutes); 
-app.use('/', accessibilityRoutes);     
-app.use('/', savedPlacesRoutes);       
+app.use('/accessibility', accessibilityRoutes);     
+app.use('/saved-places', savedPlacesRoutes);       
+       
 
 // Default route
 app.get('/', (req, res) => {

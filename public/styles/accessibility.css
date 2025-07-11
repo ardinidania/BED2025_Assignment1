@@ -1,12 +1,33 @@
 /* =============================
-   General Layout & Container
+   Global Accessibility Styles
+============================= */
+
+:root {
+  --base-font-size: 18px; /* Default: medium */
+}
+
+html {
+  font-size: var(--base-font-size);
+  transition: font-size 0.3s ease;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, label, input, select, button, textarea, span, div, a {
+  font-size: inherit;
+  font-family: Arial, sans-serif;
+  color: inherit;
+  background: inherit;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =============================
+   Page Layout & Container
 ============================= */
 body {
-  font-family: Arial, sans-serif;
   background-color: #f5f5f5;
   color: #333;
   padding: 30px;
-  margin: 0;
 }
 
 .container {
@@ -23,20 +44,17 @@ body {
 ============================= */
 h1 {
   text-align: center;
-  font-size: 28px;
   margin-bottom: 5px;
+}
+
+h2 {
+  margin-bottom: 10px;
 }
 
 p {
   text-align: center;
-  font-size: 14px;
   color: #777;
   margin-bottom: 30px;
-}
-
-h2 {
-  font-size: 20px;
-  margin-bottom: 10px;
 }
 
 .section {
@@ -44,20 +62,21 @@ h2 {
 }
 
 /* =============================
-   Font Size Dropdown
+   Form Controls
 ============================= */
-select {
+select,
+#userIdInput,
+input[type="range"],
+button {
   width: 100%;
   padding: 10px;
-  font-size: 16px;
   border-radius: 6px;
   border: 1px solid #ccc;
   background-color: #fff;
-  cursor: pointer;
 }
 
 /* =============================
-   Contrast Slider
+   Range Slider
 ============================= */
 .slider-wrapper {
   display: flex;
@@ -65,24 +84,7 @@ select {
   gap: 10px;
 }
 
-input[type="range"] {
-  flex-grow: 1;
-  appearance: none;
-  height: 6px;
-  background-color: #ddd;
-  border-radius: 4px;
-  outline: none;
-}
-
-input[type="range"]::-webkit-slider-thumb {
-  appearance: none;
-  width: 20px;
-  height: 20px;
-  background-color: #007bff;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
+input[type="range"]::-webkit-slider-thumb,
 input[type="range"]::-moz-range-thumb {
   width: 20px;
   height: 20px;
@@ -92,7 +94,7 @@ input[type="range"]::-moz-range-thumb {
 }
 
 /* =============================
-   Voice Assistant Toggle Switch
+   Toggle Switch
 ============================= */
 .switch {
   position: relative;
@@ -110,12 +112,12 @@ input[type="range"]::-moz-range-thumb {
 .slider {
   position: absolute;
   cursor: pointer;
-  background-color: #ccc;
-  border-radius: 34px;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+  background-color: #ccc;
+  border-radius: 34px;
   transition: background-color 0.4s;
 }
 
@@ -126,7 +128,7 @@ input[type="range"]::-moz-range-thumb {
   width: 26px;
   left: 4px;
   bottom: 4px;
-  background-color: #fff;
+  background-color: white;
   border-radius: 50%;
   transition: transform 0.4s;
 }
@@ -140,20 +142,53 @@ input:checked + .slider:before {
 }
 
 /* =============================
-   Save Button
+   Button Styling
 ============================= */
 button {
-  width: 100%;
-  padding: 12px;
   background-color: #007bff;
   color: white;
-  font-size: 16px;
   border: none;
-  border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
 button:hover {
   background-color: #0056b3;
+}
+
+/* =============================
+   Dark Mode Styles
+============================= */
+body.dark-mode {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+body.dark-mode .container {
+  background-color: #1e1e1e;
+  box-shadow: none;
+}
+
+body.dark-mode select,
+body.dark-mode input,
+body.dark-mode button {
+  background-color: #2a2a2a;
+  color: #ffffff;
+  border: 1px solid #444;
+}
+
+body.dark-mode input[type="range"] {
+  background-color: #444;
+}
+
+body.dark-mode .slider {
+  background-color: #555;
+}
+
+body.dark-mode input:checked + .slider {
+  background-color: #2196F3;
+}
+
+body.dark-mode button:hover {
+  background-color: #003c7e;
 }

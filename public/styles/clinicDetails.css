@@ -3,7 +3,8 @@ body {
   background-color: #eef7fd;
   margin: 0;
   padding: 20px;
-   transform: scale(0.95); 
+  transform: scale(0.95); 
+  font-size: inherit;
 }
 
 .clinic-details-container {
@@ -38,20 +39,20 @@ body {
 }
 
 #clinic-name {
-  font-size: 28px;
+  font-size: inherit;
   color: #003366;
   margin-top: 0;
 }
 
 p {
-  font-size: 20px;
+  font-size: inherit;
   margin: 15px 0;
 }
 
 button {
   margin-top: 20px;
   padding: 12px 20px;
-  font-size: 20px;
+  font-size: inherit;
   background-color: #3399ff;
   color: white;
   border: none;
@@ -69,7 +70,7 @@ button:hover {
   border: none;
   border-radius: 8px;
   padding: 12px 20px;
-  font-size: 22px;
+  font-size: inherit;
   margin-top: 20px;
   width: 100%;
   cursor: pointer;
@@ -111,7 +112,7 @@ button:hover {
 }
 
 .back-text {
-  font-size: 30px;
+  font-size: inherit;
   font-weight: bold;
   color: #002e5d;
 }
