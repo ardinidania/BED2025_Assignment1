@@ -21,6 +21,75 @@ body, h1, h2, h3, h4, h5, h6, p, label, input, select, button, textarea, span, d
   box-sizing: border-box;
 }
 
+/* =============================  
+   Top Bar/Header (Blue Style)  
+============================= */
+
+.top-bar {
+  background-color: #cce6ff;
+  padding: 30px;
+  border-radius: 12px;
+  border: 2px solid #8cb3d9;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  max-width: 1600px; /* Set the max width here */
+  margin: 0 auto;     /* Center the bar */
+  margin-bottom: 30px;
+}
+
+.top-bar-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.top-bar-text h1 {
+  margin: 0;
+  font-size: 45px;
+  font-weight: bold;
+  color: #003366;
+  text-align: left; /* Ensures left alignment */
+}
+
+.top-bar-text p {
+  margin: 0;
+  font-size: 20px;
+  color: #003366;
+  text-align: left; /* Align paragraph with the h1 */
+  margin-top: 10px;
+}
+
+/* Styling for the back button */
+.circle-back-button {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+}
+
+.arrow-icon {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-top: 2px solid #003366;
+  border-left: 2px solid #003366;
+  transform: rotate(-45deg);
+  margin-left: 2px;
+}
+
+.back-text {
+  font-size: inherit;
+  font-weight: bold;
+  color: #003366;
+}
+
+
 /* =============================
    Page Layout & Container
 ============================= */
@@ -31,13 +100,16 @@ body {
 }
 
 .container {
-  background-color: #ffffff;
-  max-width: 600px;
-  margin: 0 auto;
+  background-color: #d9ecfa;
+  max-width: 1050px;
+  margin: 60px auto 30px auto; /* Top, sides, bottom */
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 2px solid #8cb3d9;
+ 
 }
+
 
 /* =============================
    Typography
