@@ -314,3 +314,93 @@ body.dark-mode .remove-btn {
 body.dark-mode #no-saved-message {
   color: #ffffff !important;
 }
+
+/* ====================== Contrast Levels ====================== */
+
+body.contrast-normal {
+  filter: none;
+}
+
+body.contrast-medium {
+  filter: contrast(120%);
+}
+
+body.contrast-high {
+  filter: contrast(150%);
+}
+
+
+/* ====================== reminders.html ====================== */
+
+body.dark-mode,
+body.dark-mode html {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+/* Entire main box and background */
+body.dark-mode .app-background,
+body.dark-mode .main-box,
+body.dark-mode .reminder-form,
+body.dark-mode .reminder-list {
+  background-color: #121212 !important;
+  color: #ffffff !important;
+  border-color: #555 !important;
+}
+
+/* Text inside header */
+body.dark-mode .title,
+body.dark-mode .desc,
+body.dark-mode .tap-text,
+body.dark-mode .reminder-for,
+body.dark-mode .add-section,
+body.dark-mode .form-title,
+body.dark-mode label,
+body.dark-mode .reminder-list label,
+body.dark-mode .form-label,
+body.dark-mode .down-arrow {
+  color: #ffffff !important;
+}
+
+/* Back button circle and arrow */
+body.dark-mode .circle-btn {
+  background-color: #000000 !important;
+  border: 1px solid #444 !important;
+}
+body.dark-mode .left-arrow {
+  border-top: 3px solid #ffffff;
+  border-left: 3px solid #ffffff;
+}
+
+/* Day buttons */
+body.dark-mode .day-btn,
+body.dark-mode .add-reminder-btn,
+body.dark-mode .button-row button {
+  background-color: #1a1a1a !important;
+  color: #ffffff !important;
+  border: 2px solid #555 !important;
+}
+body.dark-mode .day-btn:hover,
+body.dark-mode .add-reminder-btn:hover,
+body.dark-mode .button-row button:hover {
+  background-color: #2a2a2a !important;
+  transform: scale(1.02);
+}
+
+/* Inputs and selects */
+body.dark-mode input,
+body.dark-mode select {
+  background-color: #1a1a1a !important;
+  color: #ffffff !important;
+  border: 2px solid #666 !important;
+}
+body.dark-mode input::placeholder {
+  color: #cccccc !important;
+}
+
+/* Fix for selected day button in dark mode */
+body.dark-mode .day-btn.selected {
+  background-color: #333333 !important;
+  color: #ffffff !important;
+  border-color: #666666 !important;
+}

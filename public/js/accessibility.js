@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // ✅ Font Size
-  const savedFontSize = localStorage.getItem('fontSizePreference') || 'small';
   const root = document.documentElement;
 
+  // ✅ Font Size
+  const savedFontSize = localStorage.getItem('fontSizePreference') || 'small';
   switch (savedFontSize) {
     case 'small':
       root.style.setProperty('--base-font-size', '20px');
@@ -17,14 +17,57 @@ document.addEventListener('DOMContentLoaded', () => {
       root.style.setProperty('--base-font-size', '20px');
   }
 
-  // ✅ Contrast Level
-  const savedContrast = parseInt(localStorage.getItem('contrastLevel')) || 50; // default 50 = normal
-  const contrastRatio = savedContrast / 50;
-  document.body.style.filter = `contrast(${contrastRatio})`;
+  // ✅ Contrast Level — NEW LOGIC
+  let savedContrast = parseInt(localStorage.getItem('contrastLevel'));
+  if (isNaN(savedContrast)) savedContrast = 50; // default to medium contrast
+
+  applyContrast(savedContrast);
+
+  function applyContrast(value) {
+    document.body.classList.remove('contrast-normal', 'contrast-medium', 'contrast-high');
+    if (value < 34) {
+      document.body.classList.add('contrast-normal');
+    } else if (value < 67) {
+      document.body.classList.add('contrast-medium');
+    } else {
+      document.body.classList.add('contrast-high');
+    }
+  }
 
   // ✅ Dark Mode
   const savedDarkMode = localStorage.getItem('darkMode') === 'true';
   if (savedDarkMode) {
     document.body.classList.add('dark-mode');
+  }
+
+  // ✅ Save button functionality
+  const saveBtn = document.getElementById('saveBtn');
+  const fontSizeSelect = document.getElementById('fontSize');
+  const contrastSlider = document.getElementById('contrastLevel');
+  const darkModeToggle = document.getElementById('darkModeToggle');
+  const statusMessage = document.getElementById('statusMessage');
+
+  // Load UI with saved values
+  if (fontSizeSelect) fontSizeSelect.value = savedFontSize;
+  if (contrastSlider) contrastSlider.value = savedContrast;
+  if (darkModeToggle) darkModeToggle.checked = savedDarkMode;
+
+  if (saveBtn) {
+    saveBtn.addEventListener('click', () => {
+      const selectedFontSize = fontSizeSelect.value;
+      const selectedContrast = parseInt(contrastSlider.value);
+      const isDarkMode = darkModeToggle.checked;
+
+      if (!['small', 'medium', 'large'].includes(selectedFontSize) || isNaN(selectedContrast)) {
+        statusMessage.textContent = '⚠️ Invalid input. Please try again.';
+        return;
+      }
+
+      localStorage.setItem('fontSizePreference', selectedFontSize);
+      localStorage.setItem('contrastLevel', selectedContrast);
+      localStorage.setItem('darkMode', isDarkMode);
+
+      statusMessage.textContent = '✅ Changes saved!';
+    });
   }
 });
