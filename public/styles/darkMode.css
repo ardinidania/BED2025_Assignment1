@@ -404,3 +404,103 @@ body.dark-mode .day-btn.selected {
   color: #ffffff !important;
   border-color: #666666 !important;
 }
+
+/* Fix for overflowing text in .clinic-info when font size is large */
+body.dark-mode .clinic-info {
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  box-sizing: border-box !important;
+}
+
+/* ====================== directions.html ====================== */
+
+/* Page background */
+body.dark-mode {
+  background-color: #000000 !important;
+}
+
+/* Header */
+body.dark-mode h1,
+body.dark-mode .header-row,
+body.dark-mode .back-text {
+  color: #ffffff !important;
+}
+
+/* Clinic card */
+body.dark-mode .clinic-info {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+body.dark-mode .clinic-info * {
+  color: #000000 !important;
+}
+
+/* Map container stays the same (Google Maps iframe is external) */
+
+/* Step cards */
+body.dark-mode .step-card,
+body.dark-mode .step-card * {
+  background-color: #1a1a1a !important;
+  color: #ffffff !important;
+  border-color: #444 !important;
+}
+
+/* Optional: Adjust blue highlight on left side (if used) */
+body.dark-mode .step-card::before {
+  background-color: #0d6efd !important; /* Bootstrap blue */
+}
+
+/* Back button (if styled separately) */
+body.dark-mode .circle-back-button {
+  background-color: #000000 !important;
+}
+
+body.dark-mode .arrow-icon {
+  border-top: 2px solid #ffffff !important;
+  border-left: 2px solid #ffffff !important;
+}
+
+/* Fix for directions.html: Make direction step text black inside white boxes */
+body.dark-mode .step-box,
+body.dark-mode .step-box * {
+  color: #000000 !important;
+}
+
+/* Dark mode card-like boxes */
+body.dark-mode .card,
+body.dark-mode .directions-container > div {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1);
+  margin: 10px;
+}
+
+/* Clinic info section specifically */
+body.dark-mode .clinic-details-box {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1);
+}
+
+/* Google map iframe container */
+body.dark-mode iframe {
+  border-radius: 12px;
+  border: none;
+}
+
+/* Ensure steps have dark styling too */
+body.dark-mode .step-card {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  border-radius: 12px;
+  padding: 15px;
+  margin: 10px 0;
+}
