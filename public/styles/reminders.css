@@ -1,3 +1,4 @@
+/* === Base Page Settings === */
 html, body {
   margin: 0;
   padding: 0;
@@ -5,19 +6,18 @@ html, body {
   background: #f5f6f7;
   height: 100%;
   width: 100%;
-  font-size: inherit;
 }
 
-/* Breadcrumb Text (Top Left) */
+/* === Breadcrumb Text (Top Left) === */
 .breadcrumb {
   color: #bcbcbc;
-  font-size: inherit;
+  font-size: 20px;
   padding: 24px 30px 10px 30px;
 }
 
-/* Main Grey Box */
+/* === Main Grey Box Background === */
 .main-box {
-  background: #d9d9d9;
+  background: #f0f8fc;
   width: 100%;
   min-height: 100vh;
   padding-top: 20px;
@@ -25,48 +25,57 @@ html, body {
   box-sizing: border-box;
 }
 
-/* Header Bar */
+/* === Header Bar (Back Button + Title + Subtitle) === */
 .header {
   display: flex;
   align-items: center;
-  background: #fffafa;
+  background: #d0eaff;
   padding: 20px 40px;
-  font-size: inherit;
+  border: 2px solid #a7d3f4;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  margin: 20px;
 }
 
-/* Back Button */
+/* === Circular Back Button === */
 .circle-btn {
-  width: 70px;
-  height: 70px;
-  background: #b3adad;
+  width: 48px;
+  height: 48px;
+  background: white;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 25px;
+  margin-right: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* Arrow Icon */
+/* === Left Arrow Icon inside Button === */
 .left-arrow {
-  font-size: inherit;
-  color: #313131;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-top: 3px solid #003366;
+  border-left: 3px solid #003366;
+  transform: rotate(-45deg);
+  margin-left: 3px;
 }
 
-/* Title */
+/* === Page Title === */
 .title {
-  font-size: inherit;
+  font-size: 48px;
   font-weight: bold;
-  color: #212121;
+  color: #003366;
 }
 
-/* Subtitle */
+/* === Subtitle Below Title === */
 .desc {
-  font-size: inherit;
+  font-size: 24px;
   margin-top: 8px;
-  color: #313131;
+  color: #003366;
 }
 
-/* Wrapper */
+/* === Wrapper for All Content (Days + Reminders + Add Button) === */
 .inner-box {
   max-width: 1300px;
   margin: 60px auto 0 auto;
@@ -74,13 +83,14 @@ html, body {
   text-align: center;
 }
 
-/* Instruction Text */
+/* === Instruction Text Above Day Buttons === */
 .tap-text {
-  font-size: inherit;
+  font-size: 26px;
   margin-bottom: 30px;
+  color: #003366;
 }
 
-/* Day Buttons */
+/* === Row of Day Buttons (Monday to Sunday) === */
 .days-row {
   display: flex;
   flex-wrap: wrap;
@@ -90,133 +100,205 @@ html, body {
   margin-bottom: 60px;
 }
 
+/* === Each Day Button === */
 .day-btn {
-  font-size: inherit;
+  font-size: 22px;
   padding: 14px 30px;
-  border: 3px solid #222;
+  border: 2px solid #5b9bd5;
   border-radius: 12px;
-  background: white;
+  background: hsl(205, 79%, 89%);
   cursor: pointer;
+  color: #003366;
+  transition: all 0.2s ease;
 }
 
+.day-btn:hover {
+  background-color: #b6dbf7;
+  border-color: #4a90e2;
+  transform: scale(1.03);
+}
+
+/* === Selected Day Button Styling === */
 .day-btn.selected {
   font-weight: bold;
-  background: #eeeeee;
+  background: #a7d3f4;
 }
 
-/* Section Title for Day */
+/* === Section Title for the Day’s Reminders === */
 .reminder-for {
-  font-size: inherit;
+  font-size: 26px;
   font-weight: bold;
   margin-bottom: 20px;
+  color: #003366;
 }
 
-/* Reminder Card */
+/* === White Reminder Card Container === */
 .reminder-list {
-  background: white;
-  border-radius: 14px;
-  border: 2px solid #b3b3b3;
+  background: #e1f0fb;
+  border-radius: 16px;
+  border: 2px solid #aad4f5;
   max-width: 1000px;
-  height: 200px;
   margin: 0 auto 50px auto;
   padding: 35px;
-  font-size: inherit;
+  font-size: 22px;
   text-align: left;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  color: #003366;
 }
 
+/* === Each Label Inside the Reminder List === */
 .reminder-list label {
   display: block;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
+  padding-left: 5px;
 }
 
+/* === Checkbox Styling === */
 .reminder-list input[type="checkbox"] {
   width: 24px;
   height: 24px;
   margin-right: 12px;
 }
 
-/* Add Reminder Section */
+/* === Section for Add Reminder Text + Button === */
 .add-section {
-  font-size: inherit;
+  font-size: 20px;
   margin-bottom: 20px;
+  color: #003366;
 }
 
+/* === Downward Arrow Icon === */
 .down-arrow {
-  font-size: inherit;
+  font-size: 34px;
   margin: 10px 0;
+  color: #003366;
 }
 
+/* === Add Reminder Button Styling === */
 .add-reminder-btn {
-  font-size: inherit;
+  font-size: 22px;
   padding: 14px 30px;
-  border-radius: 10px;
-  border: 3px solid #222;
-  background: white;
+  border-radius: 12px;
+  border: 2px solid #4a90e2;
+  background: #a7d3f4;
+  color: #003366;
+  font-weight: bold;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
 }
 
 .add-reminder-btn:hover {
-  background: #ededed;
+  background: #92c3ec;
+  transform: scale(1.02);
 }
 
-/* Reminder Form */
+/* === Reminder Form Container === */
 .reminder-form {
   width: 90%;
   max-width: 700px;
   min-height: 300px;
   padding: 50px;
   margin: 60px auto;
-  background-color: #f8f8f8;
-  border: 2px solid #ccc;
+  background-color: #d6eaff;
+  border: 2px solid #9ccff1;
   border-radius: 16px;
-  font-size: inherit;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-size: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
+/* === Title of Form === */
 .form-title {
   text-align: center;
-  font-size: inherit;
+  font-size: 26px;
   margin-bottom: 25px;
+  color: #003366;
 }
 
-.task-section,
-.time-section {
+/* === Form Input Fields for Task and Time === */
+.task-section input,
+.time-section input,
+.type-section select {
+  width: 100%;
+  padding: 12px;
+  font-size: 20px;
+  border: 2px solid #88c4eb;     /* soft blue border */
+  border-radius: 10px;
+  background-color: #f2f9ff;      /* pale blue bg */
+  color: #003366;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* === Labels for Task, Time, Type === */
+.task-section label,
+.time-section label,
+.type-section label {
+  font-weight: bold;
+  font-size: 23px;
+  display: block;
+  margin-bottom: 10px;
+  color: #003366;
+}
+
+/* === Type Dropdown === */
+.type-section {
   margin-bottom: 20px;
 }
 
-.task-section label,
-.time-section label {
-  font-weight: bold;
-  font-size: inherit;
-  display: block;
-  margin-bottom: 10px;
-}
-
-.task-section input,
-.time-section input {
-  width: 100%;
-  padding: 10px;
-  font-size: inherit;
-  border: 2px solid #aaa;
-  border-radius: 8px;
-  margin-left: 1px;
-}
-
+/* === Button Row === */
 .button-row {
   text-align: center;
   margin-top: 20px;
 }
 
+/* === Save Reminder & Cancel Buttons === */
 .button-row button {
-  padding: 12px 22px;
-  font-size: inherit;
+  padding: 12px 24px;
+  font-size: 18px;
   margin: 7px;
-  border-radius: 8px;
-  border: 2px solid #555;
+  border-radius: 10px;
+  border: 2px solid #4a90e2;
+  background-color: #a7d3f4;
+  color: #003366;
+  font-weight: bold;
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
 }
 
 .button-row button:hover {
-  background-color: #e0e0e0;
+  background-color: #92c3ec;
+  transform: scale(1.02);
+}
+
+/* === Optional: Align label/input nicely side by side === */
+.form-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+.form-label {
+  width: 100px;
+  text-align: right;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.form-input {
+  flex: 1;
+  padding: 10px;
+  font-size: 18px;
+  border: 2px solid #aaa;
+  border-radius: 8px;
+}
+
+.task-section input:focus,
+.time-section input:focus,
+.type-section select:focus {
+  outline: none;
+  border: 2px solid #4a90e2;
+  box-shadow: 0 0 6px #b3dcf8;
+  background-color: #f2f9ff;
 }
