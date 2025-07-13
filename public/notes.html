@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <title>Health Notes & Records</title>
+  <link rel="stylesheet" href="styles/notes.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header>
+      <button id="backBtn" aria-label="Back" onclick="window.location.href='index.html'">
+        <span aria-hidden="true">←</span>
+      </button>
+      <h1>Health Notes &amp; Records</h1>
+    </header>
+
+    <main id="noteList" aria-live="polite">
+      </main>
+
+    <button id="addBtn" class="add-note">Add New Note</button>
+
+<!-- Add Note Modal/Form -->
+<div id="addNoteModal" style="display:none; position:fixed; top:20%; left:50%; transform:translateX(-50%); background:#fff; padding:20px; border-radius:10px; box-shadow:0 4px 15px rgba(0,0,0,0.3); z-index:1000;">
+  <form id="addNoteForm">
+    <label>
+      Title:<br />
+      <input type="text" name="title" required />
+    </label><br/><br/>
+    <label>
+      Saved Name:<br />
+      <input type="text" name="savedName" required />
+    </label><br/><br/>
+    <label>
+      Clinic Name:<br />
+      <input type="text" name="clinicName" required />
+    </label><br/><br/>
+    <label>
+      Upload File:<br />
+      <input type="file" name="file" accept=".pdf,.jpg,.jpeg,.png" />
+    </label><br/><br/>
+    <button type="submit">Add Note</button>
+    <button type="button" id="cancelBtn">Cancel</button>
+  </form>
+</div>
+
+  <script>
+    const userId = "USER_ID_HERE"; // Replace with the real user ID from session/auth
+    const API = "/notes"; // Route defined in app.js → app.use('/notes', noteRoutes)
+  </script>
+
+  <script src="js/notes.js"></script>
+</body>
+</html>
