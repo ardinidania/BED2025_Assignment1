@@ -1,5 +1,5 @@
 const sql = require('mssql');
-const dbPromise = require('../db');
+const dbPromise = require('../dbConfig');
 
 // Create a new note
 exports.createNote = async (req, res) => {
