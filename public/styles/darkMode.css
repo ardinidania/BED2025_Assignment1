@@ -597,3 +597,131 @@ body.dark-mode .feature-card {
 body.dark-mode .feature-card * {
   color: #ffffff !important;
 }
+
+/* ====================== FONT-SIZE OVERRIDES for reminders.html ====================== */
+/* Put real typography on a single variable that the accessibility pane already sets.  */
+/* 1rem here equals var(--base-font-size).  We bump some headings a bit larger.        */
+
+/* Base for everything in reminders page */
+body.dark-mode .main-box,
+body.dark-mode .main-box * {
+  font-size: 1rem !important;          /*  = var(--base-font-size)                   */
+}
+
+/* Headings & big labels ----------------------------------------------------------- */
+body.dark-mode .title              { font-size: calc(1.9rem) !important; }
+body.dark-mode .tap-text,
+body.dark-mode .reminder-for       { font-size: calc(1.3rem) !important; }
+body.dark-mode .form-title         { font-size: calc(1.25rem) !important; }
+
+/* Day buttons & action buttons ---------------------------------------------------- */
+body.dark-mode .day-btn,
+body.dark-mode .add-reminder-btn,
+body.dark-mode .button-row button  { font-size: 1.1rem !important; }
+
+/* Labels inside form -------------------------------------------------------------- */
+body.dark-mode .form-label,
+body.dark-mode label               { font-size: 1rem !important; }
+
+/* Small helper text (placeholders, etc.)                                           */
+body.dark-mode input::placeholder  { font-size: 0.95rem !important; }
+
+/* ===================== Notes Page Dark Mode ===================== */
+
+body.dark-mode {
+  background-color: #121212 !important;
+  color: #ffffff !important;
+}
+
+/* Main card box */
+body.dark-mode .main-box,
+body.dark-mode .notes-container,
+body.dark-mode .note-card {
+  background-color: #1e1e1e !important;
+  border: 2px solid #444 !important;
+  color: #ffffff !important;
+}
+
+/* Text elements */
+body.dark-mode .notes-title,
+body.dark-mode .notes-description,
+body.dark-mode .note-card h2,
+body.dark-mode .note-card p,
+body.dark-mode .note-label {
+  color: #ffffff !important;
+}
+
+/* Buttons */
+body.dark-mode .add-note-btn,
+body.dark-mode .back-button,
+body.dark-mode button {
+  background-color: #2c2c2c !important;
+  color: #ffffff !important;
+  border: 2px solid #666 !important;
+}
+
+body.dark-mode .add-note-btn:hover,
+body.dark-mode .back-button:hover,
+body.dark-mode button:hover {
+  background-color: #3a3a3a !important;
+}
+
+/* Back circle arrow icon */
+body.dark-mode .circle-btn {
+  background-color: #2a2a2a !important;
+  border: 1px solid #555 !important;
+}
+body.dark-mode .left-arrow {
+  border-top: 3px solid #ffffff;
+  border-left: 3px solid #ffffff;
+}
+
+/* Dark mode fix for inner card or box */
+body.dark-mode .main-box,
+body.dark-mode .notes-container,
+body.dark-mode .card,
+body.dark-mode .inner-box {
+  background-color: #1e1e1e !important; /* dark background for the box */
+  color: #ffffff !important;
+  border-color: #555 !important;
+}
+
+/* Force dark background on all major containers */
+body.dark-mode {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+/* Target common container/card class names */
+body.dark-mode .main-box,
+body.dark-mode .card,
+body.dark-mode .box,
+body.dark-mode .container,
+body.dark-mode .content,
+body.dark-mode .note-box,
+body.dark-mode .inner-box,
+body.dark-mode .notes-container {
+  background-color: #1a1a1a !important;
+  color: #ffffff !important;
+  border-color: #444 !important;
+}
+
+/* Override text in titles/buttons */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode button,
+body.dark-mode span,
+body.dark-mode a,
+body.dark-mode div {
+  color: #ffffff !important;
+}
+
+/* Override CSS variables used in notes.css when in dark mode */
+body.dark-mode {
+  --bg-color: #000000;
+  --white: #1a1a1a;
+  --light-blue: #333333;
+  --border-blue: #555555;
+  --blue: #ffffff;
+}

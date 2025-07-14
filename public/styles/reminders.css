@@ -8,104 +8,92 @@ html, body {
   width: 100%;
 }
 
-/* === Breadcrumb Text (Top Left) === */
 .breadcrumb {
   color: #bcbcbc;
-  font-size: 20px;
-  padding: 24px 30px 10px 30px;
+  font-size: 1.11rem;
+  padding: 1.33rem 1.67rem 0.56rem 1.67rem;
 }
 
-/* === Main Grey Box Background === */
 .main-box {
   background: #f0f8fc;
   width: 100%;
   min-height: 100vh;
-  padding-top: 20px;
-  padding-bottom: 60px;
+  padding-top: 1.11rem;
+  padding-bottom: 3.33rem;
   box-sizing: border-box;
 }
 
-/* === Header Bar (Back Button + Title + Subtitle) === */
 .header {
   display: flex;
   align-items: center;
   background: #d0eaff;
-  padding: 20px 40px;
-  border: 2px solid #a7d3f4;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  margin: 20px;
+  padding: 1.11rem 2.22rem;
+  border: 0.11rem solid #a7d3f4;
+  border-radius: 0.67rem;
+  box-shadow: 0 0.11rem 0.33rem rgba(0, 0, 0, 0.08);
+  margin: 1.11rem;
 }
 
-/* === Circular Back Button === */
 .circle-btn {
-  width: 48px;
-  height: 48px;
+  width: 2.67rem;
+  height: 2.67rem;
   background: white;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  margin-right: 1.11rem;
+  box-shadow: 0 0.22rem 0.56rem rgba(0, 0, 0, 0.15);
 }
 
-/* === Left Arrow Icon inside Button === */
 .left-arrow {
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  border-top: 3px solid #003366;
-  border-left: 3px solid #003366;
+  width: 0.67rem;
+  height: 0.67rem;
+  border-top: 0.17rem solid #003366;
+  border-left: 0.17rem solid #003366;
   transform: rotate(-45deg);
-  margin-left: 3px;
+  margin-left: 0.17rem;
 }
 
-/* === Page Title === */
 .title {
-  font-size: 48px;
+  font-size: 2.67rem;
   font-weight: bold;
   color: #003366;
 }
 
-/* === Subtitle Below Title === */
 .desc {
-  font-size: 24px;
-  margin-top: 8px;
+  font-size: 1.33rem;
+  margin-top: 0.44rem;
   color: #003366;
 }
 
-/* === Wrapper for All Content (Days + Reminders + Add Button) === */
 .inner-box {
-  max-width: 1300px;
-  margin: 60px auto 0 auto;
-  padding: 0 40px;
+  max-width: 72.22rem;
+  margin: 3.33rem auto 0 auto;
+  padding: 0 2.22rem;
   text-align: center;
 }
 
-/* === Instruction Text Above Day Buttons === */
 .tap-text {
-  font-size: 26px;
-  margin-bottom: 30px;
+  font-size: 1.44rem;
+  margin-bottom: 1.67rem;
   color: #003366;
 }
 
-/* === Row of Day Buttons (Monday to Sunday) === */
 .days-row {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 24px 32px;
-  margin-top: 20px;
-  margin-bottom: 60px;
+  gap: 1.33rem 1.78rem;
+  margin-top: 1.11rem;
+  margin-bottom: 3.33rem;
 }
 
-/* === Each Day Button === */
 .day-btn {
-  font-size: 22px;
-  padding: 14px 30px;
-  border: 2px solid #5b9bd5;
-  border-radius: 12px;
+  font-size: 1.22rem;
+  padding: 0.78rem 1.67rem;
+  border: 0.11rem solid #5b9bd5;
+  border-radius: 0.67rem;
   background: hsl(205, 79%, 89%);
   cursor: pointer;
   color: #003366;
@@ -118,74 +106,66 @@ html, body {
   transform: scale(1.03);
 }
 
-/* === Selected Day Button Styling === */
 .day-btn.selected {
   font-weight: bold;
   background: #a7d3f4;
 }
 
-/* === Section Title for the Day’s Reminders === */
 .reminder-for {
-  font-size: 26px;
+  font-size: 1.44rem;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 1.11rem;
   color: #003366;
 }
 
-/* === White Reminder Card Container === */
 .reminder-list {
   background: #e1f0fb;
-  border-radius: 16px;
-  border: 2px solid #aad4f5;
-  max-width: 1000px;
-  margin: 0 auto 50px auto;
-  padding: 35px;
-  font-size: 22px;
+  border-radius: 0.89rem;
+  border: 0.11rem solid #aad4f5;
+  max-width: 55.56rem;
+  margin: 0 auto 2.78rem auto;
+  padding: 1.94rem;
+  font-size: 1.22rem;
   text-align: left;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0.22rem 0.56rem rgba(0, 0, 0, 0.05);
   color: #003366;
 }
 
-/* === Each Label Inside the Reminder List === */
 .reminder-list label {
   display: block;
-  margin-bottom: 20px;
-  padding-left: 5px;
+  margin-bottom: 1.11rem;
+  padding-left: 0.28rem;
 }
 
-/* === Checkbox Styling === */
 .reminder-list input[type="checkbox"] {
-  width: 24px;
-  height: 24px;
-  margin-right: 12px;
+  width: 1.33rem;
+  height: 1.33rem;
+  margin-right: 0.67rem;
 }
 
-/* === Section for Add Reminder Text + Button === */
 .add-section {
-  font-size: 20px;
-  margin-bottom: 20px;
+  font-size: 1.11rem;
+  margin-bottom: 1.11rem;
   color: #003366;
 }
 
-/* === Downward Arrow Icon === */
 .down-arrow {
-  font-size: 34px;
-  margin: 10px 0;
+  font-size: 1.89rem;
+  margin: 0.56rem 0;
   color: #003366;
 }
 
-/* === Add Reminder Button Styling === */
 .add-reminder-btn {
-  font-size: 22px;
-  padding: 14px 30px;
-  border-radius: 12px;
-  border: 2px solid #4a90e2;
+  font-size: 1.22rem;
+  padding: 0.78rem 1.67rem;
+  border-radius: 0.67rem;
+  border: 0.11rem solid #4a90e2;
   background: #a7d3f4;
   color: #003366;
   font-weight: bold;
   cursor: pointer;
   transition: background 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0.22rem 0.44rem rgba(0, 0, 0, 0.08);
 }
 
 .add-reminder-btn:hover {
@@ -193,77 +173,70 @@ html, body {
   transform: scale(1.02);
 }
 
-/* === Reminder Form Container === */
 .reminder-form {
   width: 90%;
-  max-width: 700px;
-  min-height: 300px;
-  padding: 50px;
-  margin: 60px auto;
+  max-width: 38.89rem;
+  min-height: 16.67rem;
+  padding: 2.78rem;
+  margin: 3.33rem auto;
   background-color: #d6eaff;
-  border: 2px solid #9ccff1;
-  border-radius: 16px;
-  font-size: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 0.11rem solid #9ccff1;
+  border-radius: 0.89rem;
+  font-size: 1.11rem;
+  box-shadow: 0 0.22rem 0.67rem rgba(0, 0, 0, 0.08);
 }
 
-/* === Title of Form === */
 .form-title {
   text-align: center;
-  font-size: 26px;
-  margin-bottom: 25px;
+  font-size: 1.44rem;
+  margin-bottom: 1.39rem;
   color: #003366;
 }
 
-/* === Form Input Fields for Task and Time === */
 .task-section input,
 .time-section input,
 .type-section select {
   width: 100%;
-  padding: 12px;
-  font-size: 20px;
-  border: 2px solid #88c4eb;     /* soft blue border */
-  border-radius: 10px;
-  background-color: #f2f9ff;      /* pale blue bg */
+  padding: 0.67rem;
+  font-size: 1.11rem;
+  border: 0.11rem solid #88c4eb;
+  border-radius: 0.56rem;
+  background-color: #f2f9ff;
   color: #003366;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0.11rem 0.28rem rgba(0, 0, 0, 0.05);
 }
 
-/* === Labels for Task, Time, Type === */
 .task-section label,
 .time-section label,
 .type-section label {
   font-weight: bold;
-  font-size: 23px;
+  font-size: 1.28rem;
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 0.56rem;
   color: #003366;
 }
 
-/* === Type Dropdown === */
 .type-section {
-  margin-bottom: 20px;
+  margin-bottom: 1.11rem;
 }
 
-/* === Button Row === */
 .button-row {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 1.11rem;
 }
 
-/* === Save Reminder & Cancel Buttons === */
 .button-row button {
-  padding: 12px 24px;
-  font-size: 18px;
-  margin: 7px;
-  border-radius: 10px;
-  border: 2px solid #4a90e2;
+  padding: 0.67rem 1.33rem;
+  font-size: 1rem;
+  margin: 0.39rem;
+  border-radius: 0.56rem;
+  border: 0.11rem solid #4a90e2;
   background-color: #a7d3f4;
   color: #003366;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0.17rem 0.33rem rgba(0, 0, 0, 0.08);
 }
 
 .button-row button:hover {
@@ -271,34 +244,33 @@ html, body {
   transform: scale(1.02);
 }
 
-/* === Optional: Align label/input nicely side by side === */
 .form-row {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
-  gap: 20px;
+  margin-bottom: 1.11rem;
+  gap: 1.11rem;
 }
 
 .form-label {
-  width: 100px;
+  width: 5.56rem;
   text-align: right;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 1.11rem;
 }
 
 .form-input {
   flex: 1;
-  padding: 10px;
-  font-size: 18px;
-  border: 2px solid #aaa;
-  border-radius: 8px;
+  padding: 0.56rem;
+  font-size: 1rem;
+  border: 0.11rem solid #aaa;
+  border-radius: 0.44rem;
 }
 
 .task-section input:focus,
 .time-section input:focus,
 .type-section select:focus {
   outline: none;
-  border: 2px solid #4a90e2;
-  box-shadow: 0 0 6px #b3dcf8;
+  border: 0.11rem solid #4a90e2;
+  box-shadow: 0 0 0.33rem #b3dcf8;
   background-color: #f2f9ff;
 }
