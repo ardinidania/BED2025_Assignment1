@@ -504,3 +504,96 @@ body.dark-mode .step-card {
   padding: 15px;
   margin: 10px 0;
 }
+
+/* Accessibility top header fix in dark mode */
+body.dark-mode .top-header {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border: 2px solid #444 !important;
+  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Make everything inside the header white */
+body.dark-mode .top-header * {
+  color: #ffffff !important;
+}
+
+/* If the back arrow is inside a circle button */
+body.dark-mode .circle-back-button {
+  background-color: #000000 !important;
+  border: 2px solid #ffffff !important;
+}
+
+/* Arrow icon styling (if not using a character) */
+body.dark-mode .arrow-icon {
+  border-top: 2px solid #ffffff !important;
+  border-left: 2px solid #ffffff !important;
+}
+
+/* Dark mode override for .top-bar */
+body.dark-mode .top-bar {
+  background-color: #000000 !important;
+  border-color: #444 !important;
+}
+
+/* Make text inside top bar white */
+body.dark-mode .top-bar-text h1,
+body.dark-mode .top-bar-text p {
+  color: #ffffff !important;
+}
+
+/* Make back button circle black with white arrow */
+body.dark-mode .circle-back-button {
+  background-color: #000000 !important;
+}
+
+body.dark-mode .arrow-icon {
+  border-top: 2px solid #ffffff !important;
+  border-left: 2px solid #ffffff !important;
+}
+
+/* Dark mode override for the Doctor Appointment top bar */
+body.dark-mode .top-bar {
+  background-color: #000000 !important;
+  border-color: #444 !important;
+}
+
+/* White text for heading and paragraph */
+body.dark-mode .top-bar h1,
+body.dark-mode .top-bar p {
+  color: #ffffff !important;
+}
+
+/* Make button text white and background black */
+body.dark-mode .top-bar button {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border: 1px solid #ffffff !important;
+}
+
+/* Dark mode for index.html (main-card header section) */
+body.dark-mode .main-card {
+  background-color: #000000 !important;
+  border-color: #444 !important;
+  color: #ffffff !important;
+}
+
+/* Ensure all text inside is white */
+body.dark-mode .main-card * {
+  color: #ffffff !important;
+}
+
+/* Optional: Make the button dark as well */
+body.dark-mode .add-btn {
+  background-color: #2a2a2a !important;
+  color: #ffffff !important;
+}
+
+/* Dark mode: Make all feature card text white */
+body.dark-mode .feature-card {
+  color: #ffffff !important;
+}
+
+body.dark-mode .feature-card * {
+  color: #ffffff !important;
+}
