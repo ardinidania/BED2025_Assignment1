@@ -1,24 +1,18 @@
 const reminderModel = require("../models/reminderModel");
 
-// GET /reminders/:userId
 async function getReminders(req, res) {
-  const userId = parseInt(req.params.userId);
-  if (isNaN(userId)) {
-    return res.status(400).json({ error: "Invalid user ID" });
-  }
-
   try {
-    const reminders = await reminderModel.getRemindersByUserId(userId);
+    const reminders = await reminderModel.getRemindersByUserId(req.userId);
     res.json(reminders);
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch reminders" });
   }
 }
 
-// POST /reminders
 async function postReminder(req, res) {
   try {
-    const success = await reminderModel.createReminder(req.body);
+    const reminderData = { ...req.body, userId: req.userId };
+    const success = await reminderModel.createReminder(reminderData);
     if (success) {
       res.status(201).json({ message: "Reminder created successfully" });
     } else {
@@ -29,7 +23,6 @@ async function postReminder(req, res) {
   }
 }
 
-// DELETE /reminders/:id
 async function deleteReminder(req, res) {
   const id = parseInt(req.params.id);
   if (isNaN(id)) {
@@ -37,7 +30,7 @@ async function deleteReminder(req, res) {
   }
 
   try {
-    const success = await reminderModel.deleteReminderById(id);
+    const success = await reminderModel.deleteReminderById(id, req.userId);
     if (success) {
       res.json({ message: "Reminder deleted successfully" });
     } else {
@@ -47,7 +40,6 @@ async function deleteReminder(req, res) {
     res.status(500).json({ error: "Server error while deleting reminder" });
   }
 }
-
 
 module.exports = {
   getReminders,

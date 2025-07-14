@@ -1,39 +1,58 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const savedPlaces = JSON.parse(localStorage.getItem('savedPlaces')) || [];
-  const container = document.getElementById('saved-places-container');
-  const noSavedMsg = document.getElementById('no-saved-message');
+let savedplaces = [];
 
-  // Clear the container first
-  container.innerHTML = "";
+function fetchSavedplaces() {
+  const token = localStorage.getItem("token");
 
-  if (savedPlaces.length === 0) {
-    noSavedMsg.style.display = 'block';
+  fetch("/saved-places", {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  })
+    .then(res => res.json())
+    .then(data => {
+      savedplaces = data;
+      renderSavedplaces();
+    })
+    .catch(err => console.error("Error fetching saved places:", err));
+}
+
+function renderSavedplaces() {
+  const list = document.getElementById("saved-places-container");
+  list.innerHTML = "";
+
+  if (savedplaces.length === 0) {
+    document.getElementById("no-saved-message").style.display = "block";
   } else {
-    noSavedMsg.style.display = 'none';
-
-    savedPlaces.forEach((place, index) => {
-      const placeCard = document.createElement('div');
-      placeCard.className = 'clinic-box';
-
-      placeCard.innerHTML = `
-        <h3>${place.name}</h3>
-        <p><strong>Address:</strong> ${place.address}</p>
-        <p><strong>Phone:</strong> ${place.phone}</p>
-        <p><strong>Opening Hours:</strong> ${place.hours}</p>
-        <button class="remove-btn" data-index="${index}">Remove</button>
-      `;
-
-      container.appendChild(placeCard);
-    });
-
-    // Attach event listeners for remove buttons
-    document.querySelectorAll('.remove-btn').forEach(button => {
-      button.addEventListener('click', (e) => {
-        const indexToRemove = parseInt(e.target.getAttribute('data-index'), 10);
-        savedPlaces.splice(indexToRemove, 1); // remove from array
-        localStorage.setItem('savedPlaces', JSON.stringify(savedPlaces)); // update localStorage
-        location.reload(); // refresh the page to reflect changes
-      });
-    });
+    document.getElementById("no-saved-message").style.display = "none";
   }
-});
+
+  savedplaces.forEach(place => {
+    const card = document.createElement("div");
+    card.className = "clinic-card"; // Match original clinic-card
+
+    card.innerHTML = `
+      <h3>${place.label}</h3>
+      <p>${place.address}</p>
+      <p>${place.phone || "No phone number"}</p>
+      <button onclick="deleteSavedplaces(${place.id})">Delete</button>
+    `;
+
+    list.appendChild(card);
+  });
+}
+
+function deleteSavedplaces(id) {
+  const token = localStorage.getItem("token");
+
+  fetch(`/saved-places/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  })
+    .then(res => res.json())
+    .then(() => fetchSavedplaces())
+    .catch(err => console.error("Error deleting saved place:", err));
+}
+
+fetchSavedplaces();

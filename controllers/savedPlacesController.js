@@ -1,42 +1,56 @@
-const sql = require('mssql');
-const config = require('../dbConfig');
-const savedPlacesModel = require('../models/savedPlacesModel');
+const savedPlacesModel = require("../models/savedPlacesModel");
 
-// GET all saved places for a user
-exports.getSavedPlaces = async (req, res) => {
-  const { userId } = req.params;
+async function getSavedPlaces(req, res) {
   try {
-    await sql.connect(config);
-    const query = savedPlacesModel.getSavedPlacesByUserId(userId);
-    const result = await sql.query(query);
-    res.json(result.recordset);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
+    const places = await savedPlacesModel.getSavedPlacesByUserId(req.userId);
+    res.json(places);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching saved places." });
   }
-};
+}
 
-// POST to add a new saved place
-exports.addSavedPlace = async (req, res) => {
-  const { userId, label, address, phone } = req.body;
-  try {
-    await sql.connect(config);
-    const query = savedPlacesModel.addSavedPlace(userId, label, address, phone);
-    await sql.query(query);
-    res.status(201).json({ message: 'Saved place added successfully' });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-};
+async function addSavedPlace(req, res) {
+  const { label, address, phone } = req.body;
 
-// DELETE a saved place
-exports.deleteSavedPlace = async (req, res) => {
-  const { id } = req.params;
-  try {
-    await sql.connect(config);
-    const query = savedPlacesModel.deleteSavedPlaceById(id);
-    await sql.query(query);
-    res.json({ message: 'Saved place deleted' });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
+  if (!label || !address) {
+    return res.status(400).json({ message: "Label and address are required." });
   }
+
+  try {
+    // Check if already exists
+    const existingPlaces = await savedPlacesModel.getSavedPlacesByUserId(req.userId);
+    const duplicate = existingPlaces.find(place => place.label === label);
+
+    if (duplicate) {
+      return res.status(409).json({ message: "Place already saved." });
+    }
+
+    const result = await savedPlacesModel.addSavedPlace({
+      label,
+      address,
+      phone,
+      userId: req.userId
+    });
+
+    res.status(201).json(result);
+  } catch (error) {
+    res.status(500).json({ message: "Error adding saved place." });
+  }
+}
+
+async function deleteSavedPlace(req, res) {
+  const id = req.params.id;
+
+  try {
+    const result = await savedPlacesModel.deleteSavedPlaceById(id, req.userId);
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({ message: "Error deleting saved place." });
+  }
+}
+
+module.exports = {
+  getSavedPlaces,
+  addSavedPlace,
+  deleteSavedPlace
 };

@@ -1,6 +1,5 @@
 let reminders = [];
 let currentDay = 'Monday';
-const userId = 3; // Replace with dynamic userId after login integration
 
 // Show add form
 function toggleAddForm() {
@@ -16,24 +15,27 @@ function cancelReminder() {
   document.getElementById('typeInput').value = '';
 }
 
-// Save reminder to backend
+// Save reminder to backend with token
 function saveReminder() {
   const task = document.getElementById('taskInput').value;
   const time = document.getElementById('timeInput').value;
   const type = document.getElementById('typeInput').value;
+  const token = localStorage.getItem("token");
 
   if (task && time && type) {
     const newReminder = {
       description: task,
       time,
       type,
-      day: currentDay,
-      userId
+      day: currentDay
     };
 
     fetch('/reminders', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      },
       body: JSON.stringify(newReminder)
     })
       .then(res => {
@@ -50,9 +52,15 @@ function saveReminder() {
   }
 }
 
-// Load reminders from backend
+// Load reminders from backend with token
 function fetchReminders() {
-  fetch(`/reminders/${userId}`)
+  const token = localStorage.getItem("token");
+
+  fetch('/reminders', {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  })
     .then(res => res.json())
     .then(data => {
       reminders = data;
@@ -66,9 +74,7 @@ function renderReminders() {
   const list = document.getElementById('reminderList');
   list.innerHTML = '';
 
-  const filtered = reminders.filter(
-    r => r.day === currentDay && r.userId === userId
-  );
+  const filtered = reminders.filter(r => r.day === currentDay);
 
   filtered.forEach((reminder) => {
     const label = document.createElement('label');
@@ -106,10 +112,15 @@ function renderReminders() {
   document.getElementById('reminderTitle').innerText = `Reminder for ${currentDay}:`;
 }
 
-// Delete a reminder from backend
+// Delete a reminder from backend with token
 function deleteReminder(id) {
+  const token = localStorage.getItem("token");
+
   fetch(`/reminders/${id}`, {
-    method: 'DELETE'
+    method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
   })
     .then(res => {
       if (res.ok) {

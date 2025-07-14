@@ -1,7 +1,6 @@
 const sql = require("mssql");
 const dbConfig = require("../dbConfig");
 
-// Get all reminders for a specific user
 async function getRemindersByUserId(userId) {
   const pool = await sql.connect(dbConfig);
   const result = await pool
@@ -11,7 +10,6 @@ async function getRemindersByUserId(userId) {
   return result.recordset;
 }
 
-// Create a new reminder
 async function createReminder(data) {
   const pool = await sql.connect(dbConfig);
   await pool
@@ -26,14 +24,14 @@ async function createReminder(data) {
   return true;
 }
 
-// Delete reminder by ID
-async function deleteReminderById(id) {
+async function deleteReminderById(id, userId) {
   const pool = await sql.connect(dbConfig);
   const result = await pool
     .request()
     .input("id", sql.Int, id)
-    .query("DELETE FROM Reminders WHERE id = @id");   
-  return result.rowsAffected[0] > 0; // returns true only if a row was deleted
+    .input("userId", sql.Int, userId)
+    .query("DELETE FROM Reminders WHERE id = @id AND userId = @userId");
+  return result.rowsAffected[0] > 0;
 }
 
 module.exports = {

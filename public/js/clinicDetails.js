@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('clinic-phone').textContent = clinic.phone;
   document.getElementById('clinic-hours').textContent = clinic.opening_hours;
 
-  // Google Map embed
   const mapFrame = document.createElement('iframe');
   mapFrame.src = `https://www.google.com/maps?q=${encodeURIComponent(clinic.address)}&output=embed`;
   mapFrame.width = "100%";
@@ -22,34 +21,53 @@ document.addEventListener('DOMContentLoaded', () => {
   mapFrame.loading = "lazy";
   document.getElementById('clinic-map').appendChild(mapFrame);
 
-  // Start Route Now button: Store clinicId separately for directions
   document.getElementById('startRouteBtn').addEventListener('click', () => {
     localStorage.setItem('selectedClinicId', clinic.clinic_id);
     window.location.href = 'directions.html';
   });
 
-  // Save Place button
   const saveBtn = document.querySelector('.save-btn');
-
   saveBtn.addEventListener('click', () => {
-    const savedPlaces = JSON.parse(localStorage.getItem('savedPlaces')) || [];
+    const token = localStorage.getItem("token");
 
-    const isAlreadySaved = savedPlaces.some(place => place.name === clinic.name);
-    if (isAlreadySaved) {
-      alert('This place is already saved.');
-      return;
-    }
+    // Check duplicates before calling POST
+    fetch("/saved-places", {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        const alreadySaved = data.some(place => place.label === clinic.name);
 
-    const newClinic = {
-      name: clinic.name,
-      address: clinic.address,
-      phone: clinic.phone,
-      hours: clinic.opening_hours
-    };
-
-    savedPlaces.push(newClinic);
-    localStorage.setItem('savedPlaces', JSON.stringify(savedPlaces));
-    alert('Place saved successfully!');
+        if (alreadySaved) {
+          alert("You already saved this place.");
+        } else {
+          fetch('/saved-places', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify({
+              label: clinic.name,
+              address: clinic.address,
+              phone: clinic.phone
+            })
+          })
+            .then(res => {
+              if (res.status === 409) {
+                alert("This place is already saved.");
+              } else {
+                return res.json();
+              }
+            })
+            .then(data => {
+              if (data?.message) alert(data.message);
+            })
+            .catch(err => console.error("Error saving place:", err));
+        }
+      });
   });
 });
 
