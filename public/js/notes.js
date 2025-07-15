@@ -19,7 +19,7 @@ addNoteForm.addEventListener('submit', async (e) => {
   formData.append('userId', userId); // add userId if needed by backend
 
   try {
-    const res = await fetch(`${API}/notes`, {
+    const res = await fetch(`/notes`, {
       method: 'POST',
       body: formData, // multipart/form-data will be automatically set
     });
