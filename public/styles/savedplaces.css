@@ -101,3 +101,37 @@ button:hover {
   color: #003366;
   margin-top: 40px;
 }
+
+.button-group {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.view-btn {
+  padding: 12px 20px;
+  font-size: inherit;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.view-btn:hover {
+  background-color: #45a049;
+}
+
+.delete-btn {
+  padding: 12px 20px;
+  font-size: inherit;
+  background-color: #3399ff;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background-color: #005dc1;
+}
