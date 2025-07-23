@@ -1,6 +1,8 @@
 let reminders = [];
 let currentDay = 'Monday';
 
+const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
 // Show add form
 function toggleAddForm() {
   document.getElementById('addForm').style.display = 'block';
@@ -15,7 +17,48 @@ function cancelReminder() {
   document.getElementById('typeInput').value = '';
 }
 
-// Save reminder to backend with token
+// ✅ NEW: Save same reminder for all 7 days
+function saveReminderForAllDays() {
+  const task = document.getElementById('taskInput').value;
+  const time = document.getElementById('timeInput').value;
+  const type = document.getElementById('typeInput').value;
+  const token = localStorage.getItem("token");
+
+  if (task && time && type) {
+    const promises = daysOfWeek.map(day => {
+      const reminder = {
+        description: task,
+        time,
+        type,
+        day
+      };
+
+      return fetch('/reminders', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(reminder)
+      });
+    });
+
+    Promise.all(promises)
+      .then(responses => {
+        if (responses.every(res => res.ok)) {
+          cancelReminder();
+          fetchReminders();
+        } else {
+          alert('Failed to save some reminders.');
+        }
+      })
+      .catch(err => console.error('Error saving reminders for all days:', err));
+  } else {
+    alert('Please fill in all fields!');
+  }
+}
+
+// Save for current day
 function saveReminder() {
   const task = document.getElementById('taskInput').value;
   const time = document.getElementById('timeInput').value;
@@ -52,7 +95,7 @@ function saveReminder() {
   }
 }
 
-// Load reminders from backend with token
+// Load reminders
 function fetchReminders() {
   const token = localStorage.getItem("token");
 
@@ -69,7 +112,7 @@ function fetchReminders() {
     .catch(err => console.error('Error fetching reminders:', err));
 }
 
-// Display reminders for current day
+// Render current day's reminders
 function renderReminders() {
   const list = document.getElementById('reminderList');
   list.innerHTML = '';
@@ -112,7 +155,7 @@ function renderReminders() {
   document.getElementById('reminderTitle').innerText = `Reminder for ${currentDay}:`;
 }
 
-// Delete a reminder from backend with token
+// Delete reminder
 function deleteReminder(id) {
   const token = localStorage.getItem("token");
 
@@ -132,7 +175,7 @@ function deleteReminder(id) {
     .catch(err => console.error('Error deleting reminder:', err));
 }
 
-// Day switching logic
+// Handle day switching
 document.querySelectorAll('.day-btn').forEach(button => {
   button.addEventListener('click', () => {
     document.querySelectorAll('.day-btn').forEach(btn => btn.classList.remove('selected'));
@@ -142,5 +185,5 @@ document.querySelectorAll('.day-btn').forEach(button => {
   });
 });
 
-// Initial load
+// On load
 fetchReminders();
