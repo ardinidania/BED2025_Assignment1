@@ -19,7 +19,7 @@ app.use("/auth", authRoutes);
 app.use('/clinics', clinicRoutes);
 app.use('/directions', directionRoutes);
 app.use('/reminders', verifyToken, reminderRoutes);
-app.use('/accessibility', accessibilityRoutes);
+app.use('/accessibility',verifyToken, accessibilityRoutes);
 app.use('/saved-places', verifyToken, savedPlacesRoutes);
 app.use('/notes', noteRoutes);
 

@@ -1,10 +1,10 @@
 module.exports = (req, res, next) => {
-  let { userId, fontSize, contrastLevel, darkMode } = req.body;
+  const { fontSize, contrastLevel, darkMode } = req.body;
+  const userId = parseInt(req.userId);
 
   const allowedFonts = ['small', 'medium', 'large'];
-  const parsedUserId = parseInt(userId);
-  const parsedContrast = parseInt(contrastLevel);
   const font = fontSize?.toLowerCase();
+  const parsedContrast = parseInt(contrastLevel);
 
   let normalizedDarkMode;
   if (darkMode === true || darkMode === 'true' || darkMode === 1 || darkMode === '1') {
@@ -15,8 +15,8 @@ module.exports = (req, res, next) => {
     normalizedDarkMode = null;
   }
 
-  if (isNaN(parsedUserId)) {
-    return res.status(400).json({ error: 'Invalid userId – must be a number.' });
+  if (!userId || isNaN(userId)) {
+    return res.status(400).json({ error: 'Invalid user ID from token.' });
   }
 
   if (!allowedFonts.includes(font)) {
@@ -31,10 +31,11 @@ module.exports = (req, res, next) => {
     return res.status(400).json({ error: 'Invalid darkMode – must be true or false.' });
   }
 
-  req.body.userId = parsedUserId;
+  // Apply cleaned values
   req.body.fontSize = font;
   req.body.contrastLevel = parsedContrast;
   req.body.darkMode = normalizedDarkMode;
 
   next();
 };
+

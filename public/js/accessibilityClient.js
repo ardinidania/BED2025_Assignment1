@@ -1,24 +1,23 @@
 const BASE_URL = 'http://localhost:3000/accessibility';
-const userId = parseInt(localStorage.getItem('userId'));
-const userName = localStorage.getItem('userName') || 'User';
 
 document.addEventListener('DOMContentLoaded', () => {
-  const nameEl = document.getElementById('userNameDisplay');
   const saveBtn = document.getElementById('saveBtn');
   const fontSizeInput = document.getElementById('fontSize');
   const contrastInput = document.getElementById('contrastLevel');
   const darkModeToggle = document.getElementById('darkModeToggle');
   const statusEl = document.getElementById('statusMessage');
 
-  // Display user name
-  if (nameEl) nameEl.textContent = userName;
-
   // === Load settings from backend ===
   async function loadSettings() {
     try {
-      const res = await fetch(`${BASE_URL}/accessibility-settings/${userId}`);
-      if (!res.ok) throw new Error('Settings not found');
+      const token = localStorage.getItem("token");
+      const res = await fetch(`${BASE_URL}/accessibility-settings`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
 
+      if (!res.ok) throw new Error('Settings not found');
       const data = await res.json();
 
       if (data.fontSize) {
@@ -39,14 +38,13 @@ document.addEventListener('DOMContentLoaded', () => {
       updateStatus('', '');
     } catch (err) {
       console.error('Error loading settings:', err);
-      updateStatus('Unable to load settings for ' + userName, 'red');
+      updateStatus('Unable to load your settings.', 'red');
     }
   }
 
-  // === Save settings to backend and localStorage ===
   saveBtn?.addEventListener('click', async () => {
+    const token = localStorage.getItem("token");
     const payload = {
-      userId,
       fontSize: fontSizeInput?.value,
       contrastLevel: parseInt(contrastInput?.value),
       darkMode: darkModeToggle?.checked || false
@@ -55,7 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       const res = await fetch(`${BASE_URL}/accessibility-settings`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
+        },
         body: JSON.stringify(payload)
       });
 
@@ -64,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return updateStatus(result.error || 'Something went wrong.', 'red');
       }
 
-      // ✅ Save to localStorage for consistency across pages
+      // Save to localStorage for preview consistency
       localStorage.setItem('fontSizePreference', payload.fontSize);
       localStorage.setItem('contrastLevel', payload.contrastLevel);
       localStorage.setItem('darkMode', payload.darkMode);
@@ -76,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // === Event listeners for real-time preview ===
+  // === Live preview event listeners ===
   fontSizeInput?.addEventListener('change', (e) => {
     applyFontSize(e.target.value);
   });
@@ -99,23 +100,17 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     const appliedSize = fontSizeMap[size] || fontSizeMap.small;
     root.style.setProperty('--base-font-size', appliedSize);
-
-    // Save to localStorage
     localStorage.setItem('fontSizePreference', size);
   }
 
   function applyContrast(level) {
-    const ratio = parseInt(level) / 50; // 50 = normal
+    const ratio = parseInt(level) / 50;
     document.body.style.filter = `contrast(${ratio})`;
-
-    // Save to localStorage
     localStorage.setItem('contrastLevel', level);
   }
 
   function toggleDarkMode(enabled) {
     document.body.classList.toggle('dark-mode', enabled);
-
-    // Save to localStorage
     localStorage.setItem('darkMode', enabled);
   }
 
@@ -124,6 +119,6 @@ document.addEventListener('DOMContentLoaded', () => {
     statusEl.style.color = color;
   }
 
-  // Load settings on page ready
+  // Load on page ready
   loadSettings();
 });
