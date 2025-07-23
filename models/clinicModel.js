@@ -5,7 +5,10 @@ async function getAllClinics() {
   let connection;
   try {
     connection = await sql.connect(dbConfig);
-    const result = await connection.request().query("SELECT * FROM Clinics");
+    const result = await connection.request().query(`
+      SELECT clinic_id, name, address, phone, opening_hours, map_embed, region, latitude, longitude
+      FROM Clinics
+    `);
     return result.recordset;
   } finally {
     if (connection) await connection.close();
@@ -18,7 +21,11 @@ async function getClinicById(id) {
     connection = await sql.connect(dbConfig);
     const result = await connection.request()
       .input("id", sql.Int, id)
-      .query("SELECT * FROM Clinics WHERE clinic_id = @id");
+      .query(`
+        SELECT clinic_id, name, address, phone, opening_hours, map_embed, region, latitude, longitude
+        FROM Clinics
+        WHERE clinic_id = @id
+      `);
     return result.recordset[0] || null;
   } finally {
     if (connection) await connection.close();
@@ -30,8 +37,8 @@ async function createClinic(data) {
   try {
     connection = await sql.connect(dbConfig);
     const query = `
-      INSERT INTO Clinics (name, address, phone, opening_hours, map_embed, region)
-      VALUES (@name, @address, @phone, @opening_hours, @map_embed, @region);
+      INSERT INTO Clinics (name, address, phone, opening_hours, map_embed, region, latitude, longitude)
+      VALUES (@name, @address, @phone, @opening_hours, @map_embed, @region, @latitude, @longitude);
       SELECT SCOPE_IDENTITY() AS clinic_id;
     `;
     const result = await connection.request()
@@ -41,6 +48,8 @@ async function createClinic(data) {
       .input("opening_hours", sql.NVarChar, data.opening_hours)
       .input("map_embed", sql.NVarChar, data.map_embed)
       .input("region", sql.NVarChar, data.region)
+      .input("latitude", sql.Float, data.latitude)
+      .input("longitude", sql.Float, data.longitude)
       .query(query);
 
     return await getClinicById(result.recordset[0].clinic_id);
