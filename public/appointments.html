@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Manage Appointments</title>
+  <link rel="stylesheet" href="styles/appointments.css" />
+  <script src="js/appointments.js"></script>
+</head>
+<body>
+  <div class="appointment-container">
+    <h1>Manage Appointments</h1>
+
+    <form id="appointmentForm">
+      <label>
+        User ID
+        <input type="number" id="userId" placeholder="e.g. 1" required />
+      </label>
+      <label>
+        Clinic ID
+        <input type="number" id="clinicId" placeholder="e.g. 2" required />
+      </label>
+      <label>
+        Date
+        <input type="date" id="appointmentDate" required />
+      </label>
+      <label>
+        Time
+        <input type="time" id="appointmentTime" required />
+      </label>
+      <label>
+        Doctor’s Name
+        <input type="text" id="doctorName" placeholder="Dr. Smith" required />
+      </label>
+      <label>
+        Location
+        <input type="text" id="location" placeholder="Clinic address" required />
+      </label>
+      <label class="checkbox-label">
+        <input type="checkbox" id="reminderEnabled" />
+        Send reminder
+      </label>
+      <button type="submit" class="btn-submit">Add Appointment</button>
+    </form>
+
+    <table class="appointments-table">
+      <thead>
+        <tr>
+          <th>ID</th><th>User</th><th>Clinic</th>
+          <th>Date</th><th>Time</th><th>Doctor</th>
+          <th>Location</th><th>Reminder</th>
+        </tr>
+      </thead>
+      <tbody id="appointmentsBody">
+        <tr><td colspan="8">Enter a User ID above and submit to load appointments.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

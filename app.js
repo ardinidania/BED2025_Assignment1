@@ -11,6 +11,7 @@ const accessibilityRoutes = require('./routes/accessibility');
 const savedPlacesRoutes = require('./routes/savedPlaces');
 const reminderRoutes = require('./routes/reminders');
 const noteRoutes = require('./routes/notes');
+const appointmentRoutes = require('./routes/appointments');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -22,6 +23,7 @@ app.use('/reminders', verifyToken, reminderRoutes);
 app.use('/accessibility', accessibilityRoutes);
 app.use('/saved-places', verifyToken, savedPlacesRoutes);
 app.use('/notes', noteRoutes);
+app.use('/appointments', appointmentRoutes);
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "login.html"));
@@ -34,5 +36,9 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
+
+app.use(express.static(path.join(__dirname, 'public')));
+
+
 
 
