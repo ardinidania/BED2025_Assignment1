@@ -1,31 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>How To Get There</title>
   <link rel="stylesheet" href="styles/directions.css">
-   <link rel="stylesheet" href="styles/darkMode.css">
+  <link rel="stylesheet" href="styles/darkMode.css">
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet">
+  <link href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.1/mapbox-gl-directions.css" rel="stylesheet">
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <a id="back-link" href="#" class="back-arrow">←</a>
-      <span>Nearby Clinic</span>
-    </div>
 
+  <div class="header-row">
+    <a href="clinicDetails.html" class="circle-back-button">
+      <span class="arrow-icon"></span>
+    </a>
+    <span class="back-text">Nearby Clinics</span>
+  </div>
+
+  <div class="container">
     <div class="clinic-info" id="clinic-info">
-      <div class="map-box" id="map"></div>
-      <div class="details-box">
-        <h2 id="clinic-name"></h2>
-        <p id="clinic-address"></p>
-        <p id="clinic-phone"></p>
-        <p id="clinic-hours"></p>
+      <div class="top-row">
+        <div class="map-box" id="map"></div>
+        <div class="details-box">
+          <h2 id="clinic-name"></h2>
+          <p id="clinic-address"></p>
+          <p id="clinic-phone"></p>
+          <p id="clinic-hours"></p>
+        </div>
+      </div>
+
+      <div class="live-map-box">
+        <div id="live-map" style="width: 100%; height: 300px;"></div>
       </div>
     </div>
 
     <div class="steps" id="steps"></div>
   </div>
 
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.1/mapbox-gl-directions.js"></script>
   <script src="js/directions.js"></script>
   <script src="js/accessibility.js"></script>
 </body>

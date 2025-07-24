@@ -28,7 +28,8 @@ function renderSavedplaces() {
 
   savedplaces.forEach(place => {
     const card = document.createElement("div");
-    card.className = "clinic-card";
+    card.className = "clinic-box";
+
 
     // Set inner content (excluding buttons)
     card.innerHTML = `

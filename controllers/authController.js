@@ -4,21 +4,21 @@ const jwt = require("jsonwebtoken");
 const config = require("../dbConfig");
 
 exports.login = async (req, res) => {
-  const { ic, password } = req.body;
+  const { ic, phone, pin } = req.body;
 
   try {
     await sql.connect(config);
-    const result = await sql.query`SELECT * FROM Users WHERE ic = ${ic}`;
+    const result = await sql.query`SELECT * FROM Users WHERE ic = ${ic} AND phone = ${phone}`;
     let user = result.recordset[0];
 
     if (!user) {
-      const hash = await bcrypt.hash(password, 10);
-      await sql.query`INSERT INTO Users (ic, passwordHash) VALUES (${ic}, ${hash})`;
-      const newResult = await sql.query`SELECT * FROM Users WHERE ic = ${ic}`;
+      const hash = await bcrypt.hash(pin, 10);
+      await sql.query`INSERT INTO Users (ic, phone, pinHash) VALUES (${ic}, ${phone}, ${hash})`;
+      const newResult = await sql.query`SELECT * FROM Users WHERE ic = ${ic} AND phone = ${phone}`;
       user = newResult.recordset[0];
     } else {
-      const valid = await bcrypt.compare(password, user.passwordHash);
-      if (!valid) return res.status(401).json({ message: "Invalid password" });
+      const valid = await bcrypt.compare(pin, user.pinHash);
+      if (!valid) return res.status(401).json({ message: "Invalid PIN." });
     }
 
     const token = jwt.sign(

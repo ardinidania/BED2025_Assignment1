@@ -6,8 +6,7 @@ const accessibilityModel = require('../models/accessibilityModel');
 exports.getSettings = async (req, res) => {
   try {
     await sql.connect(config);
-    const userId = parseInt(req.params.userId);
-
+    const userId = parseInt(req.userId);
     const request = new sql.Request();
     request.input('userId', sql.Int, userId);
 
@@ -29,7 +28,8 @@ exports.getSettings = async (req, res) => {
 
 // POST /accessibility-settings
 exports.saveSettings = async (req, res) => {
-  const { userId, fontSize, contrastLevel, darkMode } = req.body;
+  const userId = parseInt(req.userId);
+  const { fontSize, contrastLevel, darkMode } = req.body;
 
   try {
     await sql.connect(config);

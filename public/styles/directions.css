@@ -1,63 +1,108 @@
 body {
-  margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #eef7ff;
+  background-color: #eef7fd;
+  margin: 0;
+  padding: 20px;
+  transform: scale(0.95);
+  font-size: inherit;
+}
+
+.header-row {
+  display: flex;
+  align-items: center;
+  margin-top: 35px;
+  margin-left: 20px;
+}
+
+.circle-back-button {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.arrow-icon {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-top: 2px solid #002e5d;
+  border-left: 2px solid #002e5d;
+  transform: rotate(-45deg);
+  margin-left: 2px;
+}
+
+.back-text {
+  font-size: inherit;
+  font-weight: bold;
+  color: #002e5d;
 }
 
 .container {
+  max-width: 950px;
+  margin: 0 auto;
   padding: 20px;
 }
 
-.header {
-  font-size: 24px;
-  font-weight: bold;
-  color: #01497c;
-  margin-bottom: 20px;
-}
-
-.back-arrow {
-  text-decoration: none;
-  color: #01497c;
-  margin-right: 10px;
-  font-size: 24px;
-}
-
-.clinic-info {
+.top-row {
   display: flex;
-  justify-content: center;
-  gap: 40px;
-  margin-bottom: 30px;
-  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: nowrap;
 }
 
-.map-box iframe {
-  width: 300px;
-  height: 200px;
-  border: 0;
-  border-radius: 10px;
-  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+.map-box {
+  flex: 0 0 58%;
 }
 
 .details-box {
-  max-width: 350px;
-  background: white;
+  flex: 0 0 38%;
+  background-color: white;
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#map iframe {
+  width: 100%;
+  height: 300px;
+  border-radius: 12px;
+}
+
+.live-map-box {
+  margin-top: 20px;
+  width: 100%;
+}
+
+#live-map {
+  width: 100%;
+  height: 300px;
+  border-radius: 12px;
 }
 
 .steps {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+  margin-top: 20px;
 }
 
 .step-box {
-  background: white;
+  background-color: white;
   padding: 15px;
-  border-radius: 10px;
-  border-left: 6px solid #3a86ff;
-  box-shadow: 0 0 6px rgba(0,0,0,0.05);
+  margin-bottom: 10px;
+  border-left: 5px solid #3a86ff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.step-box strong {
+  display: block;
+  margin-bottom: 5px;
 }
 
 

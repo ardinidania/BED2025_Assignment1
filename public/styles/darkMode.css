@@ -271,49 +271,66 @@ body.dark-mode html {
   background-color: #000000 !important;
 }
 
-/* Title text */
-body.dark-mode .page-title {
-  color: #ffffff !important;
-}
-
-/* "Nearby Clinics" text */
+/* Title and back text */
+body.dark-mode .page-title,
 body.dark-mode .back-text {
   color: #ffffff !important;
 }
 
-/* Back arrow styling */
+/* Back arrow and button */
 body.dark-mode .circle-back-button {
   background-color: #000000 !important;
+  border: 2px solid #ffffff !important;
 }
-
 body.dark-mode .arrow-icon {
   border-top: 2px solid #ffffff !important;
   border-left: 2px solid #ffffff !important;
 }
 
-/* Saved Clinic Box stays white, but text inside is black */
+/* Clinic box */
 body.dark-mode .clinic-box {
-  background-color: #ffffff !important;
-  color: #000000 !important;
-  border-color: #ccc !important;
-}
-
-/* Force all text inside .clinic-box to black */
-body.dark-mode .clinic-box * {
-  color: #000000 !important;
-}
-
-/* Remove button styling */
-body.dark-mode .remove-btn {
-  background-color: #1a1a1a !important;
+  background-color: #1e1e1e !important;
+  border: 2px solid #90c5f0 !important;
   color: #ffffff !important;
-  border: 1px solid #444 !important;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 25px;
+}
+
+/* Clinic box text */
+body.dark-mode .clinic-box h3,
+body.dark-mode .clinic-box p {
+  color: #ffffff !important;
+}
+
+/* Buttons inside clinic box */
+body.dark-mode .clinic-box .button-group button {
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 12px !important;
+  cursor: pointer;
+  font-size: inherit;
+  padding: 12px 20px !important;
+}
+
+/* Specific button colors */
+body.dark-mode .clinic-box .button-group button:nth-child(1) {
+  background-color: #1a73e8 !important; /* Delete */
+}
+body.dark-mode .clinic-box .button-group button:nth-child(2) {
+  background-color: #34a853 !important; /* View Details */
+}
+
+/* Button hover */
+body.dark-mode .clinic-box .button-group button:hover {
+  opacity: 0.9;
 }
 
 /* "No saved places" message */
 body.dark-mode #no-saved-message {
   color: #ffffff !important;
 }
+
 
 /* ====================== Contrast Levels ====================== */
 
@@ -717,11 +734,4 @@ body.dark-mode div {
   color: #ffffff !important;
 }
 
-/* Override CSS variables used in notes.css when in dark mode */
-body.dark-mode {
-  --bg-color: #000000;
-  --white: #1a1a1a;
-  --light-blue: #333333;
-  --border-blue: #555555;
-  --blue: #ffffff;
-}
+
