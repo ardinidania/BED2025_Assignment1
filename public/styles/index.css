@@ -98,4 +98,31 @@ body {
   margin-top: 30px;
 }
 
+/* === Add Appointment Button Hover === */
+.add-btn:hover {
+  background-color: #b6d9f5;
+}
+
+/* === Circle Icon with + === */
+.feature-card .circle {
+  width: 60px;
+  height: 60px;
+  background-color: #aacdf0;
+  border-radius: 50%;
+  margin-top: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  font-weight: bold;
+  color: #003366;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.feature-card .circle:hover {
+  background-color: #92c3ec;
+  transform: scale(1.1);
+}
 

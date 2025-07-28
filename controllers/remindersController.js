@@ -41,8 +41,27 @@ async function deleteReminder(req, res) {
   }
 }
 
+async function updateReminder(req, res) {
+  const id = parseInt(req.params.id);
+  if (isNaN(id)) {
+    return res.status(400).json({ error: "Invalid reminder ID" });
+  }
+
+  try {
+    const updated = await reminderModel.updateReminderById(id, req.userId, req.body);
+    if (updated) {
+      res.json({ message: "Reminder updated successfully" });
+    } else {
+      res.status(404).json({ error: "Reminder not found or not authorized" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: "Server error while updating reminder" });
+  }
+}
+
 module.exports = {
   getReminders,
   postReminder,
-  deleteReminder
+  deleteReminder,
+  updateReminder
 };

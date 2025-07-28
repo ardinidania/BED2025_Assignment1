@@ -34,8 +34,24 @@ async function deleteReminderById(id, userId) {
   return result.rowsAffected[0] > 0;
 }
 
+async function updateReminderById(id, userId, data) {
+  const pool = await sql.connect(dbConfig);
+  const result = await pool
+    .request()
+    .input("id", sql.Int, id)
+    .input("userId", sql.Int, userId)
+    .input("description", sql.NVarChar, data.description)
+    .input("time", sql.VarChar, data.time)
+    .input("type", sql.VarChar, data.type)
+    .query(`UPDATE Reminders 
+            SET description = @description, time = @time, type = @type
+            WHERE id = @id AND userId = @userId`);
+  return result.rowsAffected[0] > 0;
+}
+
 module.exports = {
   getRemindersByUserId,
   createReminder,
-  deleteReminderById
+  deleteReminderById,
+  updateReminderById
 };
