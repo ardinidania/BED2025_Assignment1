@@ -46,6 +46,28 @@ async function createDirection(data) {
   }
 }
 
+async function updateDirectionByClinicId(clinicId, data) {
+  let connection;
+  try {
+    connection = await sql.connect(dbConfig);
+    const query = `
+      UPDATE Directions
+      SET instruction = @instruction,
+          icon_path = @icon_path
+      WHERE clinic_id = @clinicId AND step_number = @step_number
+    `;
+    const request = connection.request();
+    request.input("clinicId", sql.Int, clinicId);
+    request.input("step_number", sql.Int, data.step_number);
+    request.input("instruction", sql.NVarChar, data.instruction);
+    request.input("icon_path", sql.NVarChar, data.icon_path || null);
+    await request.query(query);
+    return { message: "Direction updated successfully" };
+  } finally {
+    if (connection) await connection.close();
+  }
+}
+
 async function deleteDirectionById(id) {
   let connection;
   try {
@@ -65,5 +87,6 @@ async function deleteDirectionById(id) {
 module.exports = {
   getDirectionsByClinicId,
   createDirection,
+  updateDirectionByClinicId,
   deleteDirectionById
 };

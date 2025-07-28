@@ -7,7 +7,9 @@ const clinicSchema = Joi.object({
   phone: Joi.string().min(3).max(20).required(),
   opening_hours: Joi.string().min(3).max(255).required(),
   map_embed: Joi.string().uri().optional().allow(null, ''),
-  region: Joi.string().valid("North", "South", "East", "West", "Central").required()
+  region: Joi.string().valid("North", "South", "East", "West", "Central").required(),
+  latitude: Joi.number().required(),
+  longitude: Joi.number().required()
 });
 
 // Middleware to validate body

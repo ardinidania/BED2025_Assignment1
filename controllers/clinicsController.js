@@ -20,6 +20,21 @@ async function createClinic(req, res) {
   }
 }
 
+async function updateClinic(req, res) {
+  try {
+    const id = parseInt(req.params.id);
+    if (isNaN(id)) return res.status(400).json({ error: "Invalid clinic ID" });
+
+    const updated = await clinicModel.updateClinic(id, req.body);
+    if (!updated) return res.status(404).json({ error: "Clinic not found" });
+
+    res.json(updated);
+  } catch (err) {
+    console.error("Update error:", err);
+    res.status(500).json({ error: "Failed to update clinic" });
+  }
+}
+
 async function deleteClinic(req, res) {
   try {
     const id = parseInt(req.params.id);
@@ -38,5 +53,6 @@ async function deleteClinic(req, res) {
 module.exports = {
   fetchClinics,
   createClinic,
+  updateClinic,
   deleteClinic
 };

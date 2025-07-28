@@ -58,6 +58,40 @@ async function createClinic(data) {
   }
 }
 
+async function updateClinic(id, data) {
+  let connection;
+  try {
+    connection = await sql.connect(dbConfig);
+    const query = `
+      UPDATE Clinics
+      SET name = @name,
+          address = @address,
+          phone = @phone,
+          opening_hours = @opening_hours,
+          map_embed = @map_embed,
+          region = @region,
+          latitude = @latitude,
+          longitude = @longitude
+      WHERE clinic_id = @id;
+    `;
+    await connection.request()
+      .input("id", sql.Int, id)
+      .input("name", sql.NVarChar, data.name)
+      .input("address", sql.NVarChar, data.address)
+      .input("phone", sql.NVarChar, data.phone)
+      .input("opening_hours", sql.NVarChar, data.opening_hours)
+      .input("map_embed", sql.NVarChar, data.map_embed)
+      .input("region", sql.NVarChar, data.region)
+      .input("latitude", sql.Float, data.latitude)
+      .input("longitude", sql.Float, data.longitude)
+      .query(query);
+
+    return await getClinicById(id);
+  } finally {
+    if (connection) await connection.close();
+  }
+}
+
 async function deleteClinic(id) {
   let connection;
   try {
@@ -78,5 +112,6 @@ module.exports = {
   getAllClinics,
   getClinicById,
   createClinic,
+  updateClinic,
   deleteClinic
 };

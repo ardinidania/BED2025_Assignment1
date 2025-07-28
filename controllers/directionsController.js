@@ -19,11 +19,22 @@ async function createDirection(req, res) {
     const result = await directionModel.createDirection(req.body);
     res.status(201).json(result);
   } catch (error) {
-    console.error("Controller error:", error); // This stays
-    res.status(500).json({ error: "Failed to create direction", details: error.message }); // Add details
+    console.error("Controller error:", error); 
+    res.status(500).json({ error: "Failed to create direction", details: error.message }); 
   }
 }
 
+async function updateDirection(req, res) {
+  try {
+    const clinicId = parseInt(req.params.clinicId);
+    if (isNaN(clinicId)) return res.status(400).json({ error: "Invalid clinic ID" });
+
+    const result = await directionModel.updateDirectionByClinicId(clinicId, req.body);
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to update direction" });
+  }
+}
 
 async function deleteDirection(req, res) {
   try {
@@ -42,5 +53,6 @@ async function deleteDirection(req, res) {
 module.exports = {
   getDirections,
   createDirection,
+  updateDirection,
   deleteDirection
 };
