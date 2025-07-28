@@ -2,6 +2,8 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const app = express();
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require("./swagger-output.json");
 
 const authRoutes = require("./routes/auth");
 const verifyToken = require("./middlewares/verifyToken");
@@ -15,6 +17,7 @@ const appointmentRoutes = require('./routes/appointments');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use("/auth", authRoutes);
 app.use('/clinics', clinicRoutes);
@@ -35,7 +38,9 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Swagger docs at http://localhost:${PORT}/api-docs`);
 });
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 
