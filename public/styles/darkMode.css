@@ -6,6 +6,11 @@ html {
   font-size: var(--base-font-size);
 }
 
+body.dark-mode .main-header h1 {
+  font-size: 80px !important;
+  font-weight: bold !important; /* match light mode */
+}
+
 /* ====================== GLOBAL STYLES (APPLY TO ALL HTMLs) ====================== */
 body.dark-mode {
   background-color: #121212;
