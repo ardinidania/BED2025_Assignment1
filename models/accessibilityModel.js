@@ -1,4 +1,4 @@
-// Parameterized SQL query for MERGE (UPSERT)
+// Existing MERGE query
 exports.mergeAccessibilitySettingsQuery = `
 MERGE AccessibilitySettings AS target
 USING (SELECT @userId AS userId) AS source
@@ -13,7 +13,21 @@ WHEN NOT MATCHED THEN
   VALUES (@userId, @fontSize, @contrastLevel, @darkMode);
 `;
 
-// Parameterized SQL query for retrieving settings by userId
+// Existing SELECT
 exports.getAccessibilityByUserIdQuery = `
 SELECT * FROM AccessibilitySettings WHERE userId = @userId
+`;
+
+// ✅ NEW: Update only (used in PUT)
+exports.updateAccessibilityQuery = `
+UPDATE AccessibilitySettings
+SET fontSize = @fontSize,
+    contrastLevel = @contrastLevel,
+    darkMode = @darkMode
+WHERE userId = @userId
+`;
+
+// ✅ NEW: Delete
+exports.deleteAccessibilityQuery = `
+DELETE FROM AccessibilitySettings WHERE userId = @userId
 `;

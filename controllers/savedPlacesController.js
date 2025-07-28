@@ -17,7 +17,6 @@ async function addSavedPlace(req, res) {
   }
 
   try {
-    // Check if already exists
     const existingPlaces = await savedPlacesModel.getSavedPlacesByUserId(req.userId);
     const duplicate = existingPlaces.find(place => place.label === label);
 
@@ -38,6 +37,22 @@ async function addSavedPlace(req, res) {
   }
 }
 
+async function updateSavedPlace(req, res) {
+  const id = req.params.id;
+  const { label, address, phone } = req.body;
+
+  if (!label || !address) {
+    return res.status(400).json({ message: "Label and address are required." });
+  }
+
+  try {
+    const result = await savedPlacesModel.updateSavedPlaceById(id, req.userId, { label, address, phone });
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({ message: "Error updating saved place." });
+  }
+}
+
 async function deleteSavedPlace(req, res) {
   const id = req.params.id;
 
@@ -52,5 +67,6 @@ async function deleteSavedPlace(req, res) {
 module.exports = {
   getSavedPlaces,
   addSavedPlace,
+  updateSavedPlace, 
   deleteSavedPlace
 };

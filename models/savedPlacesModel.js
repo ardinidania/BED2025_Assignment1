@@ -20,6 +20,22 @@ async function addSavedPlace({ label, address, phone, userId }) {
   return { message: "Saved place added." };
 }
 
+async function updateSavedPlaceById(id, userId, { label, address, phone }) {
+  const pool = await sql.connect(config);
+  await pool.request()
+    .input("id", sql.Int, id)
+    .input("userId", sql.Int, userId)
+    .input("label", sql.NVarChar, label)
+    .input("address", sql.NVarChar, address)
+    .input("phone", sql.NVarChar, phone)
+    .query(`
+      UPDATE SavedPlaces 
+      SET label = @label, address = @address, phone = @phone
+      WHERE id = @id AND userId = @userId
+    `);
+  return { message: "Saved place updated." };
+}
+
 async function deleteSavedPlaceById(id, userId) {
   const pool = await sql.connect(config);
   await pool.request()
@@ -32,5 +48,6 @@ async function deleteSavedPlaceById(id, userId) {
 module.exports = {
   getSavedPlacesByUserId,
   addSavedPlace,
+  updateSavedPlaceById,
   deleteSavedPlaceById
 };
