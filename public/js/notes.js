@@ -13,31 +13,35 @@ cancelBtn.addEventListener('click', () => {
   addNoteForm.reset();
 });
 
-// Load all notes on page load
+// Load notes on page load
 document.addEventListener("DOMContentLoaded", loadNotes);
 
 async function loadNotes() {
+  const token = localStorage.getItem("token");
   try {
-    const res = await fetch(`/notes/${userId}`);
+    const res = await fetch("/notes", {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
     if (!res.ok) throw new Error("Failed to fetch notes");
     const notes = await res.json();
 
-    noteList.innerHTML = ""; // Clear current notes
+    noteList.innerHTML = ""; // Clear previous
     notes.forEach(note => renderNote(note));
   } catch (err) {
     console.error("Load Notes Error:", err);
   }
 }
 
-// Submit handler
 addNoteForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   const formData = new FormData(addNoteForm);
-  formData.append('userId', userId); // Required for backend
 
   const token = localStorage.getItem("token");
+
   try {
-    const res = await fetch(`/notes`, {
+    const res = await fetch("/notes", {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${token}`
@@ -47,12 +51,12 @@ addNoteForm.addEventListener('submit', async (e) => {
 
     if (!res.ok) {
       const errorText = await res.json();
-      console.error('Server responded with error:', errorText);
+      console.error('Server error:', errorText);
       return;
     }
 
-    const newNote = await res.json(); // return the newly created note
-    renderNote(newNote); // Add new note to the list
+    const newNote = await res.json();
+    renderNote(newNote);
 
     addNoteModal.style.display = 'none';
     addNoteForm.reset();
@@ -61,7 +65,6 @@ addNoteForm.addEventListener('submit', async (e) => {
   }
 });
 
-// Helper to create note card
 function renderNote(note) {
   const card = document.createElement('div');
   card.className = 'note-card';
@@ -80,15 +83,64 @@ function renderNote(note) {
   infoDiv.appendChild(saved);
   infoDiv.appendChild(clinic);
 
-  const btn = document.createElement('button');
-  btn.textContent = 'Edit Details';
-  btn.onclick = () => {
+  // Buttons container
+  const btnContainer = document.createElement('div');
+  btnContainer.style.display = 'flex';
+  btnContainer.style.gap = '10px';
+
+  // View Button
+  if (note.filePath) {
+    const viewBtn = document.createElement('button');
+    viewBtn.textContent = 'View File';
+    viewBtn.onclick = () => {
+      const ext = note.filePath.toLowerCase();
+      if (ext.endsWith('.pdf')) {
+        window.open(note.filePath, '_blank');
+      } else if (ext.endsWith('.jpg') || ext.endsWith('.jpeg') || ext.endsWith('.png')) {
+        const imgWindow = window.open('', '_blank');
+        imgWindow.document.write(`<img src="${note.filePath}" alt="Health File" style="max-width:100%; margin:20px;" />`);
+      } else {
+        alert("Unsupported file type");
+      }
+    };
+    btnContainer.appendChild(viewBtn);
+  }
+
+  // Edit Button (placeholder)
+  const editBtn = document.createElement('button');
+  editBtn.textContent = 'Edit Details';
+  editBtn.onclick = () => {
     alert(`Editing note: ${note.title}`);
-    // Implement editing popup/modal if needed
   };
+  btnContainer.appendChild(editBtn);
+
+  // Delete Button
+  const deleteBtn = document.createElement('button');
+  deleteBtn.textContent = 'Delete';
+  deleteBtn.style.backgroundColor = '#b00020'; // Optional: red button
+  deleteBtn.onclick = async () => {
+    const confirmDelete = confirm(`Are you sure you want to delete "${note.title}"?`);
+    if (!confirmDelete) return;
+
+    const token = localStorage.getItem("token");
+    try {
+      const res = await fetch(`/notes/${note.noteId}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+
+      if (!res.ok) throw new Error("Failed to delete note");
+
+      card.remove(); // Remove from DOM
+    } catch (err) {
+      alert("Delete Error: " + err.message);
+    }
+  };
+  btnContainer.appendChild(deleteBtn);
 
   card.appendChild(infoDiv);
-  card.appendChild(btn);
-
+  card.appendChild(btnContainer);
   noteList.appendChild(card);
 }
