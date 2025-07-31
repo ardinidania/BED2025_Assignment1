@@ -45,7 +45,7 @@
 </div>
 
   <script>
-    const userId = "USER_ID_HERE"; // Replace with the real user ID from session/auth
+    const userId = localStorage.getItem("userId");
     const API = "/notes"; // Route defined in app.js → app.use('/notes', noteRoutes)
   </script>
 
