@@ -140,6 +140,21 @@ main {
   transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
+.note-card button + button {
+  margin-left: 10px;
+}
+
+
+.note-card button:nth-child(3) {
+  background-color: #b00020;
+}
+
+.note-card button:nth-child(3):hover {
+  background-color: #e53935;
+}
+
+
+
 .note-card button:hover {
   background-color: #004488; /* Darker blue on hover */
   transform: translateY(-1px); /* Subtle lift */

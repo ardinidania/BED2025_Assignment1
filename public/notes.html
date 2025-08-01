@@ -25,15 +25,15 @@
   <form id="addNoteForm">
     <label>
       Title:<br />
-      <input type="text" name="title" required />
+      <input type="text" name="title" />
     </label><br/><br/>
     <label>
       Saved Name:<br />
-      <input type="text" name="savedName" required />
+      <input type="text" name="savedName" />
     </label><br/><br/>
     <label>
       Clinic Name:<br />
-      <input type="text" name="clinicName" required />
+      <input type="text" name="clinicName" />
     </label><br/><br/>
     <label>
       Upload File:<br />
@@ -45,7 +45,7 @@
 </div>
 
   <script>
-    const userId = "USER_ID_HERE"; // Replace with the real user ID from session/auth
+    const userId = localStorage.getItem("userId");
     const API = "/notes"; // Route defined in app.js → app.use('/notes', noteRoutes)
   </script>
 

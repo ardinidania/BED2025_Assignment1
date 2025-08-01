@@ -1,19 +1,27 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const upload = require('../middlewares/validateNote');
-const notesController = require('../controllers/notesController');
+const multer = require("multer");
+const path = require("path");
+const {
+  fetchNotes,
+  fetchNoteById,
+  createNote,
+  updateNote,
+  deleteNote
+} = require("../controllers/notesController");
+const { validateNoteData } = require("../middlewares/validateNote");
 
-router.get('/', (req, res) => {
-    res.send("Hello from notes")
-})
+// Multer setup
+const storage = multer.diskStorage({
+  destination: "./uploads/",
+  filename: (req, file, cb) => cb(null, Date.now() + path.extname(file.originalname))
+});
+const upload = multer({ storage });
 
-// Create note with optional file upload
-router.post('/', upload.single('file'), notesController.createNote);
-
-// Get notes by userId
-router.get('/:userId', notesController.getNotesByUser);
-
-
+router.get("/", fetchNotes);
+router.get("/:id", fetchNoteById);
+router.post("/", upload.single("file"), validateNoteData, createNote);
+router.put("/:id", upload.single("file"), validateNoteData, updateNote);
+router.delete("/:id", deleteNote);
 
 module.exports = router;
-
