@@ -6,7 +6,7 @@ const {
   createAppointment,
   updateAppointment,
   deleteAppointment
-} = require('../controllers/appointmentsController');  // <— must match the file name!
+} = require('../controllers/appointmentsController'); 
 
 router.get('/', getAllAppointments);
 router.get('/user/:userId', getAppointmentsByUser);

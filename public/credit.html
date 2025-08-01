@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Credits</title>
+  <link rel="stylesheet" href="styles/index.css" />
+  <link rel="stylesheet" href="styles/darkMode.css" />
+  <style>
+    body {
+      background-color: #e9f4ff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .top-bar {
+      display: flex;
+      align-items: center;
+      background-color: #cbe4ff;
+      padding: 1rem;
+    }
+
+    .circle-back-button {
+      width: 40px;
+      height: 40px;
+      background-color: white;
+      border: 2px solid #007BFF;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      margin-right: 1rem;
+    }
+
+    .circle-back-button span {
+      border: solid #007BFF;
+      border-width: 0 3px 3px 0;
+      display: inline-block;
+      padding: 6px;
+      transform: rotate(135deg);
+    }
+
+    .top-bar-text h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      color: #005aa7;
+    }
+
+    .container {
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #005aa7;
+      margin-top: 2rem;
+    }
+
+    ul {
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.8rem;
+      font-size: 1.1rem;
+    }
+
+    a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .top-bar-text h1 {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <a href="index.html" class="circle-back-button">
+      <span></span>
+    </a>
+    <div class="top-bar-text">
+      <h1>Credits & Acknowledgements</h1>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>Team Members</h2>
+    <ul>
+      <li><strong>Puteri Mayangsari</strong> – Daily Reminders</li>
+      <li><strong>Ardini Dania</strong> – Login, Nearby Clinics & How to Get There</li>
+      <li><strong>Megan Tan Wen Xin</strong> – Saved Places & Accessibility Settings</li>
+      <li><strong>Koh Rui Qi Rachael</strong> – Doctor Appointments</li>
+      <li><strong>Saravana & Shwethashri</strong> – Health Notes & Secure Sharing</li>
+    </ul>
+
+    <h2>Media & Information Sources</h2>
+    <ul>
+      <li>Clinic locations and directions – <a href="https://www.onemap.gov.sg/" target="_blank">OneMap Singapore API</a></li>
+      <li>Live routing and maps – <a href="https://www.mapbox.com/" target="_blank">Mapbox Directions API</a></li>
+      <li>Health references – <a href="https://www.moh.gov.sg/" target="_blank">Ministry of Health Singapore</a></li>
+      <li>Icons – <a href="https://lucide.dev/" target="_blank">Lucide Icons</a></li>
+      <li>Stock images – <a href="https://unsplash.com/" target="_blank">Unsplash</a> and <a href="https://www.freepik.com/" target="_blank">Freepik</a></li>
+    </ul>
+  </div>
+
+</body>
+</html>

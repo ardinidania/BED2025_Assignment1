@@ -3,12 +3,12 @@ const addNoteModal = document.getElementById('addNoteModal');
 const addNoteForm = document.getElementById('addNoteForm');
 const cancelBtn = document.getElementById('cancelBtn');
 const noteList = document.getElementById('noteList');
-const noteIdField = document.getElementById('noteId'); // hidden field
+const noteIdField = document.getElementById('noteId'); 
 
 addBtn.addEventListener('click', () => {
   addNoteModal.style.display = 'block';
   addNoteForm.reset();
-  noteIdField.value = ""; // ensure we're not editing
+  noteIdField.value = ""; 
 });
 
 cancelBtn.addEventListener('click', () => {

@@ -1,6 +1,6 @@
 let reminders = [];
 let currentDay = 'Monday';
-let editReminderId = null; // ID of reminder being updated
+let editReminderId = null; 
 
 const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 

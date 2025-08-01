@@ -1,7 +1,7 @@
 /* === Base Page Settings === */
 html {
   font-family: Arial, sans-serif;
-  font-size: 18px; /* Base size for consistent scaling */
+  font-size: 18px; 
 }
 
 body {
@@ -38,7 +38,7 @@ body {
 
 .main-header h1 {
   margin: 0;
-  font-size: 80px; /* Bold and large like your second image */
+  font-size: 80px; 
   font-weight: bold;
 }
 
@@ -50,7 +50,7 @@ body {
   border: none;
   border-radius: 12px;
   cursor: pointer;
-  font-size: 18px; /* Consistent button text size */
+  font-size: 18px; 
   text-transform: capitalize;
   letter-spacing: 1px;
 }
@@ -72,7 +72,7 @@ body {
   flex: 1;
   text-align: left;
   font-weight: bold;
-  font-size: 30px; /* Matches the box label size in your second image */
+  font-size: 30px; 
   display: flex;
   flex-direction: column;
   justify-content: space-between;

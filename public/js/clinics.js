@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = 'clinicDetails.html';
           });
 
-          // Only append the clickable name (no Save button here)
           clinicCard.appendChild(clinicBtn);
           regionContainer.appendChild(clinicCard);
         }
@@ -26,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
     .catch(error => console.error('Error fetching clinics:', error));
 });
 
-// Optional: Function to save place (used elsewhere like in clinicDetails.js)
 function savePlace(placeName, address) {
   const elderlyName = localStorage.getItem("elderlyName");
 

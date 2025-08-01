@@ -1,7 +1,7 @@
 const BASE_URL = 'http://localhost:3000/accessibility';
 
 window.addEventListener('load', async () => {
-  const userId = localStorage.getItem('userId') || 1; // use login session if you have
+  const userId = localStorage.getItem('userId') || 1; 
   try {
     const res = await fetch(`${BASE_URL}/accessibility-settings/${userId}`);
     const data = await res.json();
