@@ -11,7 +11,7 @@
 
 html {
   font-size: var(--base-font-size);
-  box-sizing: border-box;
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
 }
 
 *,
@@ -21,123 +21,121 @@ html {
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* A more modern sans-serif font */
   background-color: var(--bg-color);
   margin: 0;
-  padding: 20px;
+  padding: 20px; /* Reduced padding for a tighter layout */
   display: flex;
   justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  color: var(--blue);
+  align-items: center; /* Center vertically as well */
+  min-height: 100vh; /* Ensure body takes full viewport height */
+  color: var(--blue); /* Default text color */
 }
 
 .app-shell {
   background: var(--white);
-  border-radius: 20px;
-  padding: 2.5rem;
-  width: min(90%, 600px);
-  box-shadow: var(--shadow-medium);
+  border-radius: 20px; /* More rounded corners */
+  padding: 2.5rem; /* Increased padding */
+  width: min(90%, 600px); /* Responsive width, max 600px */
+  box-shadow: var(--shadow-medium); /* More pronounced shadow */
   border: 2px solid var(--border-blue);
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  gap: 1.5rem;
+  display: grid; /* Use CSS Grid for main layout */
+  grid-template-rows: auto 1fr auto; /* Header, main content, footer/button */
+  gap: 1.5rem; /* Space between grid items */
 }
 
 /* Header */
 header {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 20px; /* Increased gap */
   background-color: var(--light-blue);
-  padding: 18px 25px;
-  border-radius: 15px;
-  box-shadow: var(--shadow-light);
+  padding: 18px 25px; /* Larger padding */
+  border-radius: 15px; /* More rounded */
+  box-shadow: var(--shadow-light); /* Subtle header shadow */
   border: 2px solid var(--border-blue);
 }
 
 header h1 {
-  font-size: 1.6rem;
+  font-size: 1.6rem; /* Slightly larger heading */
   color: var(--blue);
   margin: 0;
-  flex-grow: 1;
-  text-align: center;
+  flex-grow: 1; /* Allows title to take available space */
+  text-align: center; /* Center the title */
 }
 
 #backBtn {
   background: var(--white);
   border: none;
   border-radius: 50%;
-  width: 48px;
+  width: 48px; /* Slightly larger button */
   height: 48px;
-  font-size: 1.4rem;
+  font-size: 1.4rem; /* Larger icon */
   cursor: pointer;
   color: var(--blue);
   box-shadow: var(--shadow-light);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth transition */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 #backBtn:hover {
-  transform: translateY(-2px);
+  transform: translateY(-2px); /* Lift effect on hover */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Note Cards Container (main) */
 main {
-  display: grid;
-  gap: 1rem;
+  display: grid; /* Use grid for notes list */
+  gap: 1rem; /* Space between note cards */
 }
 
 /* Note Cards */
 .note-card {
-  background-color: var(--light-blue);
-  border-radius: 15px;
-  padding: 1.2rem 1.8rem;
+  background-color: var(--light-blue); /* Using light-blue for notes */
+  border-radius: 15px; /* Match header rounding */
+  padding: 1.2rem 1.8rem; /* Adjusted padding */
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  border: 1px solid var(--border-blue);
-  box-shadow: var(--shadow-light);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  gap: 20px;
-  flex-wrap: wrap;
+  align-items: center; /* Vertically align items */
+  border: 1px solid var(--border-blue); /* Thinner border for cards */
+  box-shadow: var(--shadow-light); /* Subtle shadow for each card */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth transition */
 }
 
 .note-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-3px); /* Lift effect on hover */
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
-.note-card div {
+.note-card div { /* Container for title and date */
   flex-grow: 1;
 }
 
 .note-card h2 {
   margin: 0;
-  font-size: 1.1rem;
+  font-size: 1.1rem; /* Slightly larger note title */
   color: var(--blue);
-  line-height: 1.4;
+  line-height: 1.4; /* Improve readability */
 }
 
 .note-card small {
   display: block;
-  color: #555;
-  margin-top: 6px;
-  font-size: 0.8rem;
-  opacity: 0.8;
+  color: #555; /* Darker grey for better contrast */
+  margin-top: 6px; /* Increased margin */
+  font-size: 0.8rem; /* Slightly smaller for subtle date */
+  opacity: 0.8; /* Make it a bit faded */
 }
 
-/* Buttons inside card */
+/* Button inside card */
 .note-card button {
   background: var(--blue);
   color: var(--white);
   border: none;
-  padding: 8px 14px;
-  border-radius: 8px;
-  font-size: 0.8rem;
+  padding: 8px 14px; /* Larger padding for better touch target */
+  border-radius: 8px; /* More rounded */
+  font-size: 0.8rem; /* Slightly larger font */
   cursor: pointer;
   transition: background-color 0.2s ease, transform 0.2s ease;
 }
@@ -145,6 +143,7 @@ main {
 .note-card button + button {
   margin-left: 10px;
 }
+
 
 .note-card button:nth-child(3) {
   background-color: #b00020;
@@ -154,43 +153,55 @@ main {
   background-color: #e53935;
 }
 
+
+
 .note-card button:hover {
-  background-color: #004488;
-  transform: translateY(-1px);
+  background-color: #004488; /* Darker blue on hover */
+  transform: translateY(-1px); /* Subtle lift */
 }
 
 /* Add Note button */
 .add-note {
   width: 100%;
-  padding: 1rem;
-  background-color: var(--blue);
-  color: var(--white);
-  border: 2px solid var(--blue);
-  border-radius: 12px;
+  padding: 1rem; /* More generous padding */
+  background-color: var(--blue); /* Changed to blue for prominence */
+  color: var(--white); /* White text on blue */
+  border: 2px solid var(--blue); /* Strong border matching background */
+  border-radius: 12px; /* Nicely rounded */
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: 1.1rem; /* Slightly larger font */
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-  box-shadow: var(--shadow-light);
+  box-shadow: var(--shadow-light); /* Initial shadow */
 }
 
 .add-note:hover {
-  background-color: #044280;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  background-color: #044280; /* Darker blue on hover */
+  transform: translateY(-2px); /* Lift effect */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
 }
 
 .add-note:active {
-  transform: translateY(0);
+  transform: translateY(0); /* Press down effect */
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Left & right content split */
+/* Fix alignment inside note card */
+.note-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Align to top instead of center */
+  gap: 20px;
+  flex-wrap: wrap; /* Allow stacking on small screens */
+}
+
+/* Left side content */
 .note-content {
   flex: 1 1 60%;
   min-width: 200px;
 }
 
+/* Right side buttons */
 .note-actions {
   display: flex;
   flex-direction: column;
@@ -199,7 +210,7 @@ main {
   min-width: 100px;
 }
 
-/* Responsive */
+/* Responsive for smaller devices */
 @media (max-width: 480px) {
   .note-card {
     flex-direction: column;
@@ -217,28 +228,4 @@ main {
     flex: 1 1 30%;
     min-width: 80px;
   }
-}
-
-.circle-back-button {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  background: white;
-  box-shadow: 0 0 20px rgba(0, 119, 255, 0.1);
-  text-decoration: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-shrink: 0; /* prevent from shrinking */
-}
-
-
-.arrow-icon {
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  border: solid #002c5f;
-  border-width: 0 4px 4px 0;
-  padding: 8px;
-  transform: rotate(135deg);
 }
