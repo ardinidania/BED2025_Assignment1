@@ -185,3 +185,47 @@ main {
   transform: translateY(0); /* Press down effect */
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
+
+/* Fix alignment inside note card */
+.note-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Align to top instead of center */
+  gap: 20px;
+  flex-wrap: wrap; /* Allow stacking on small screens */
+}
+
+/* Left side content */
+.note-content {
+  flex: 1 1 60%;
+  min-width: 200px;
+}
+
+/* Right side buttons */
+.note-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  min-width: 100px;
+}
+
+/* Responsive for smaller devices */
+@media (max-width: 480px) {
+  .note-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .note-actions {
+    align-items: stretch;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .note-actions button {
+    flex: 1 1 30%;
+    min-width: 80px;
+  }
+}
