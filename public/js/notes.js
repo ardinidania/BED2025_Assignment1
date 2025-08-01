@@ -3,14 +3,18 @@ const addNoteModal = document.getElementById('addNoteModal');
 const addNoteForm = document.getElementById('addNoteForm');
 const cancelBtn = document.getElementById('cancelBtn');
 const noteList = document.getElementById('noteList');
+const noteIdField = document.getElementById('noteId'); // hidden field
 
 addBtn.addEventListener('click', () => {
   addNoteModal.style.display = 'block';
+  addNoteForm.reset();
+  noteIdField.value = ""; // ensure we're not editing
 });
 
 cancelBtn.addEventListener('click', () => {
   addNoteModal.style.display = 'none';
   addNoteForm.reset();
+  noteIdField.value = "";
 });
 
 // Load notes on page load
@@ -27,22 +31,24 @@ async function loadNotes() {
     if (!res.ok) throw new Error("Failed to fetch notes");
     const notes = await res.json();
 
-    noteList.innerHTML = ""; // Clear previous
+    noteList.innerHTML = "";
     notes.forEach(note => renderNote(note));
   } catch (err) {
     console.error("Load Notes Error:", err);
   }
 }
 
+// Add or Edit Submit
 addNoteForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   const formData = new FormData(addNoteForm);
-
   const token = localStorage.getItem("token");
+  const noteId = noteIdField.value;
+  const isEdit = noteId && noteId.trim() !== "";
 
   try {
-    const res = await fetch("/notes", {
-      method: 'POST',
+    const res = await fetch(isEdit ? `/notes/${noteId}` : "/notes", {
+      method: isEdit ? "PUT" : "POST",
       headers: {
         Authorization: `Bearer ${token}`
       },
@@ -55,13 +61,13 @@ addNoteForm.addEventListener('submit', async (e) => {
       return;
     }
 
-    const newNote = await res.json();
-    renderNote(newNote);
-
     addNoteModal.style.display = 'none';
     addNoteForm.reset();
+    noteIdField.value = "";
+
+    loadNotes();
   } catch (err) {
-    alert("Add Note Error: " + err.message);
+    alert("Submit Error: " + err.message);
   }
 });
 
@@ -83,10 +89,10 @@ function renderNote(note) {
   infoDiv.appendChild(saved);
   infoDiv.appendChild(clinic);
 
-  // Buttons container
   const btnContainer = document.createElement('div');
   btnContainer.style.display = 'flex';
-  btnContainer.style.gap = '10px';
+  btnContainer.style.flexDirection = 'column';
+  btnContainer.style.gap = '8px';
 
   // View Button
   if (note.filePath) {
@@ -106,18 +112,23 @@ function renderNote(note) {
     btnContainer.appendChild(viewBtn);
   }
 
-  // Edit Button (placeholder)
+  // Edit Button
   const editBtn = document.createElement('button');
   editBtn.textContent = 'Edit Details';
   editBtn.onclick = () => {
-    alert(`Editing note: ${note.title}`);
+    addNoteModal.style.display = 'block';
+    addNoteForm.reset();
+    noteIdField.value = note.noteId;
+    addNoteForm.elements['title'].value = note.title;
+    addNoteForm.elements['savedName'].value = note.savedName;
+    addNoteForm.elements['clinicName'].value = note.clinicName;
   };
   btnContainer.appendChild(editBtn);
 
   // Delete Button
   const deleteBtn = document.createElement('button');
   deleteBtn.textContent = 'Delete';
-  deleteBtn.style.backgroundColor = '#b00020'; // Optional: red button
+  deleteBtn.style.backgroundColor = '#b00020';
   deleteBtn.onclick = async () => {
     const confirmDelete = confirm(`Are you sure you want to delete "${note.title}"?`);
     if (!confirmDelete) return;
