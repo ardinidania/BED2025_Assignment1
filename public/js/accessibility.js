@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.documentElement;
 
-  // ✅ Font Size
   const savedFontSize = localStorage.getItem('fontSizePreference') || 'small';
   switch (savedFontSize) {
     case 'small':
@@ -17,9 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
       root.style.setProperty('--base-font-size', '20px');
   }
 
-  // ✅ Contrast Level — NEW LOGIC
   let savedContrast = parseInt(localStorage.getItem('contrastLevel'));
-  if (isNaN(savedContrast)) savedContrast = 50; // default to medium contrast
+  if (isNaN(savedContrast)) savedContrast = 50; 
 
   applyContrast(savedContrast);
 
@@ -34,20 +32,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // ✅ Dark Mode
   const savedDarkMode = localStorage.getItem('darkMode') === 'true';
   if (savedDarkMode) {
     document.body.classList.add('dark-mode');
   }
 
-  // ✅ Save button functionality
   const saveBtn = document.getElementById('saveBtn');
   const fontSizeSelect = document.getElementById('fontSize');
   const contrastSlider = document.getElementById('contrastLevel');
   const darkModeToggle = document.getElementById('darkModeToggle');
   const statusMessage = document.getElementById('statusMessage');
 
-  // Load UI with saved values
   if (fontSizeSelect) fontSizeSelect.value = savedFontSize;
   if (contrastSlider) contrastSlider.value = savedContrast;
   if (darkModeToggle) darkModeToggle.checked = savedDarkMode;
@@ -59,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const isDarkMode = darkModeToggle.checked;
 
       if (!['small', 'medium', 'large'].includes(selectedFontSize) || isNaN(selectedContrast)) {
-        statusMessage.textContent = '⚠️ Invalid input. Please try again.';
+        statusMessage.textContent = 'Invalid input. Please try again.';
         return;
       }
 
@@ -67,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
       localStorage.setItem('contrastLevel', selectedContrast);
       localStorage.setItem('darkMode', isDarkMode);
 
-      statusMessage.textContent = '✅ Changes saved!';
+      statusMessage.textContent = 'Changes saved!';
     });
   }
 });

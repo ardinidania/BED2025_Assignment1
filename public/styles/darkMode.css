@@ -8,7 +8,7 @@ html {
 
 body.dark-mode .main-header h1 {
   font-size: 80px !important;
-  font-weight: bold !important; /* match light mode */
+  font-weight: bold !important; 
 }
 
 /* ====================== GLOBAL STYLES (APPLY TO ALL HTMLs) ====================== */
@@ -19,14 +19,13 @@ body.dark-mode {
 
 /* Base font size controlled by JS */
 html {
-  font-size: var(--base-font-size, 20px); /* fallback if JS fails */
+  font-size: var(--base-font-size, 20px); 
 }
 
 body,
 * {
   font-size: inherit;
 }
-
 
 /* ====================== accessibility.html ====================== */
 /* Container and layout boxes */
@@ -187,8 +186,6 @@ body.dark-mode .day-btn.selected {
   color: #000000 !important;
 }
 
-
-
 /* Back button and arrow */
 body.dark-mode .back-button {
   background-color: #1a1a1a !important;
@@ -336,7 +333,6 @@ body.dark-mode #no-saved-message {
   color: #ffffff !important;
 }
 
-
 /* ====================== Contrast Levels ====================== */
 
 body.contrast-normal {
@@ -350,7 +346,6 @@ body.contrast-medium {
 body.contrast-high {
   filter: contrast(150%);
 }
-
 
 /* ====================== reminders.html ====================== */
 
@@ -438,7 +433,6 @@ body.dark-mode .clinic-info {
 }
 
 /* ====================== directions.html ====================== */
-
 /* Page background */
 body.dark-mode {
   background-color: #000000 !important;
@@ -473,7 +467,7 @@ body.dark-mode .step-card * {
 
 /* Optional: Adjust blue highlight on left side (if used) */
 body.dark-mode .step-card::before {
-  background-color: #0d6efd !important; /* Bootstrap blue */
+  background-color: #0d6efd !important; 
 }
 
 /* Back button (if styled separately) */
@@ -621,13 +615,10 @@ body.dark-mode .feature-card * {
 }
 
 /* ====================== FONT-SIZE OVERRIDES for reminders.html ====================== */
-/* Put real typography on a single variable that the accessibility pane already sets.  */
-/* 1rem here equals var(--base-font-size).  We bump some headings a bit larger.        */
-
 /* Base for everything in reminders page */
 body.dark-mode .main-box,
 body.dark-mode .main-box * {
-  font-size: 1rem !important;          /*  = var(--base-font-size)                   */
+  font-size: 1rem !important;      
 }
 
 /* Headings & big labels ----------------------------------------------------------- */
@@ -649,7 +640,6 @@ body.dark-mode label               { font-size: 1rem !important; }
 body.dark-mode input::placeholder  { font-size: 0.95rem !important; }
 
 /* ===================== Notes Page Dark Mode ===================== */
-
 body.dark-mode {
   background-color: #121212 !important;
   color: #ffffff !important;
@@ -703,7 +693,7 @@ body.dark-mode .main-box,
 body.dark-mode .notes-container,
 body.dark-mode .card,
 body.dark-mode .inner-box {
-  background-color: #1e1e1e !important; /* dark background for the box */
+  background-color: #1e1e1e !important; 
   color: #ffffff !important;
   border-color: #555 !important;
 }
@@ -808,7 +798,6 @@ body.dark-mode button:hover {
 }
 
 /* ====================== notes.html ====================== */
-
 body.dark-mode .app-shell {
   background-color: #1a1a1a !important;
   border-color: var(--border-blue) !important;
@@ -1011,8 +1000,8 @@ body.dark-mode input[type="date"] {
   background-color: #111 !important;
   color: #fff !important;
   border: 2px solid #666 !important;
-  padding-right: 10px; /* avoid icon cut-off */
-  height: 42px; /* force consistent height */
+  padding-right: 10px; 
+  height: 42px; 
   font-size: 1rem;
 }
 

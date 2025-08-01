@@ -23,7 +23,7 @@ app.use("/auth", authRoutes);
 app.use('/clinics', clinicRoutes);
 app.use('/directions', directionRoutes);
 app.use('/reminders', verifyToken, reminderRoutes);
-app.use('/accessibility',verifyToken, accessibilityRoutes);
+app.use('/accessibility', verifyToken, accessibilityRoutes);
 app.use('/saved-places', verifyToken, savedPlacesRoutes);
 app.use('/notes', noteRoutes);
 app.use('/appointments', appointmentRoutes);
@@ -35,15 +35,4 @@ app.get("/", (req, res) => {
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-  console.log(`Swagger docs at http://localhost:${PORT}/api-docs`);
-});
-
-
-app.use(express.static(path.join(__dirname, 'public')));
-
-
-
-
+module.exports = app;

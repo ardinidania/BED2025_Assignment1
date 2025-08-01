@@ -163,11 +163,11 @@ button:hover {
 }
 
 .clinic-box .button-group button:nth-child(1) {
-  background-color: #1a73e8; /* Delete */
+  background-color: #1a73e8; 
 }
 
 .clinic-box .button-group button:nth-child(2) {
-  background-color: #34a853; /* View Details */
+  background-color: #34a853; 
 }
 
 .clinic-box .button-group button:hover {

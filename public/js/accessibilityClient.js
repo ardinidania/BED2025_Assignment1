@@ -7,11 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const darkModeToggle = document.getElementById('darkModeToggle');
   const statusEl = document.getElementById('statusMessage');
 
-  // === Load settings from backend ===
   async function loadSettings() {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`${BASE_URL}/accessibility-settings`, {
+      const res = await fetch(`${BASE_URL}/accessibility-settings`, {  
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -51,8 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     try {
-      const res = await fetch(`${BASE_URL}/accessibility-settings`, {
-        method: 'POST',
+      const res = await fetch(`${BASE_URL}/accessibility-settings`, { 
+        method: 'POST', 
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`
@@ -65,7 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return updateStatus(result.error || 'Something went wrong.', 'red');
       }
 
-      // Save to localStorage for preview consistency
       localStorage.setItem('fontSizePreference', payload.fontSize);
       localStorage.setItem('contrastLevel', payload.contrastLevel);
       localStorage.setItem('darkMode', payload.darkMode);
@@ -77,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // === Live preview event listeners ===
   fontSizeInput?.addEventListener('change', (e) => {
     applyFontSize(e.target.value);
   });
@@ -90,7 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleDarkMode(e.target.checked);
   });
 
-  // === Apply individual settings ===
   function applyFontSize(size) {
     const root = document.documentElement;
     const fontSizeMap = {
@@ -119,6 +115,5 @@ document.addEventListener('DOMContentLoaded', () => {
     statusEl.style.color = color;
   }
 
-  // Load on page ready
   loadSettings();
 });

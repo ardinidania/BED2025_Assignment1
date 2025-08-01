@@ -31,7 +31,6 @@ module.exports = (req, res, next) => {
     return res.status(400).json({ error: 'Invalid darkMode – must be true or false.' });
   }
 
-  // Apply cleaned values
   req.body.fontSize = font;
   req.body.contrastLevel = parsedContrast;
   req.body.darkMode = normalizedDarkMode;

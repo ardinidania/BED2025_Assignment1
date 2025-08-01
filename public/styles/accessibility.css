@@ -3,7 +3,7 @@
 ============================= */
 
 :root {
-  --base-font-size: 18px; /* Default: medium */
+  --base-font-size: 18px; 
 }
 
 html {
@@ -33,8 +33,8 @@ body, h1, h2, h3, h4, h5, h6, p, label, input, select, button, textarea, span, d
   display: flex;
   align-items: center;
   gap: 20px;
-  max-width: 1600px; /* Set the max width here */
-  margin: 0 auto;     /* Center the bar */
+  max-width: 1600px; 
+  margin: 0 auto;     
   margin-bottom: 30px;
 }
 
@@ -49,14 +49,14 @@ body, h1, h2, h3, h4, h5, h6, p, label, input, select, button, textarea, span, d
   font-size: 45px;
   font-weight: bold;
   color: #003366;
-  text-align: left; /* Ensures left alignment */
+  text-align: left; 
 }
 
 .top-bar-text p {
   margin: 0;
   font-size: 20px;
   color: #003366;
-  text-align: left; /* Align paragraph with the h1 */
+  text-align: left; 
   margin-top: 10px;
 }
 
@@ -102,7 +102,7 @@ body {
 .container {
   background-color: #d9ecfa;
   max-width: 1050px;
-  margin: 60px auto 30px auto; /* Top, sides, bottom */
+  margin: 60px auto 30px auto; 
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);

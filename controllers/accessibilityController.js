@@ -2,11 +2,10 @@ const sql = require('mssql');
 const config = require('../dbConfig');
 const accessibilityModel = require('../models/accessibilityModel');
 
-// GET /accessibility-settings
 exports.getSettings = async (req, res) => {
   try {
     await sql.connect(config);
-    const userId = parseInt(req.userId);
+    const userId = parseInt(req.userId); 
     const request = new sql.Request();
     request.input('userId', sql.Int, userId);
 
@@ -26,9 +25,8 @@ exports.getSettings = async (req, res) => {
   }
 };
 
-// POST /accessibility-settings
 exports.saveSettings = async (req, res) => {
-  const userId = parseInt(req.userId);
+  const userId = parseInt(req.userId); 
   const { fontSize, contrastLevel, darkMode } = req.body;
 
   try {
@@ -49,9 +47,8 @@ exports.saveSettings = async (req, res) => {
   }
 };
 
-// PUT /accessibility-settings
 exports.updateSettings = async (req, res) => {
-  const userId = parseInt(req.userId);
+  const userId = parseInt(req.userId); 
   const { fontSize, contrastLevel, darkMode } = req.body;
 
   try {
@@ -59,7 +56,6 @@ exports.updateSettings = async (req, res) => {
     const request = new sql.Request();
     request.input('userId', sql.Int, userId);
 
-    // Check if exists
     const check = await request.query(accessibilityModel.getAccessibilityByUserIdQuery);
     if (!check.recordset || check.recordset.length === 0) {
       return res.status(404).json({ message: 'Accessibility settings not found for update.' });
@@ -78,9 +74,8 @@ exports.updateSettings = async (req, res) => {
   }
 };
 
-// DELETE /accessibility-settings
 exports.deleteSettings = async (req, res) => {
-  const userId = parseInt(req.userId);
+  const userId = parseInt(req.userId); 
 
   try {
     await sql.connect(config);
